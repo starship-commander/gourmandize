@@ -19,6 +19,7 @@ import SignUp from "./pages/SignUp"
 
 
 const App = (props) => {
+  console.log(props);
   return(
     <BrowserRouter>
       <Header {...props} />
