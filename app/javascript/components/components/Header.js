@@ -3,9 +3,11 @@ import Navigation from "./Navigation";
 
 const Header = (props) => {
     return(
-      <>
-       <Navigation {...props} />
-      </>
+      <main style={{height:'5vh'}}>
+        <div style={{position:'absolute', right:'0.3vw'}}>
+          <Navigation {...props} />
+        </div>
+      </main>
     )
   }
   
