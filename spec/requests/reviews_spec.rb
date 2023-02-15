@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "Reviews", type: :request do
   describe "GET /index" do
     it 'gets all reviews' do
-      user = User.create!(
+      user = User.create(
         email: 'cheesy_boy@email.com',
         password: 'cheese',
         username: 'CheesyBoy'
       )
 
-      restaurant = Restaurant.create!(
+      restaurant = Restaurant.create(
         name: 'Best Cheeseburger',
         cuisine: 'Cheeseburger',
         street: '123 ABC Rd',
@@ -24,7 +24,7 @@ RSpec.describe "Reviews", type: :request do
         user_id: user.id
       )
 
-      review = Review.create!(
+      review = Review.create(
         meal: 'cheeseburger',
         content: 'The cheeseburger was delicious, and fresh!',
         rating: 5,

@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "Restaurants", type: :request do
   describe "GET /index" do
     it 'gets all restaurants' do
-      user = User.create!(
+      user = User.create(
         email: 'cheesy_boy@email.com',
         password: 'cheese',
         username: 'CheesyBoy'
       )
 
-      restaurant = Restaurant.create!(
+      restaurant = Restaurant.create(
         name: 'Best Cheeseburger',
         cuisine: 'Cheeseburger',
         street: '123 ABC Rd',
