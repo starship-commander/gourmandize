@@ -23,15 +23,34 @@ describe("<Navigation />", () => {
     expect(screen.getByText("Home")).toBeInTheDocument()
   })
   
-  it("has a signout link", () => {
+  it("has a sign in link", () => {
     render(
       <BrowserRouter>
         <Navigation />
       </BrowserRouter>        
     )
-    screen.logTestingPlaygroundURL()
-    userEvent.click(screen.getByText('Sign Out'))
-    expect(screen.getByRole('link', {name: /sign out/i}).toBeInTheDocument())
+    userEvent.click(screen.getByText('Sign In'))
+    expect(screen.getByText('Sign In')).toBeInTheDocument()
+  })
+
+  it("has a sign up link", () => {
+    render(
+      <BrowserRouter>
+        <Navigation />
+      </BrowserRouter>        
+    )
+    userEvent.click(screen.getByText('Sign Up'))
+    expect(screen.getByText('Sign Up')).toBeInTheDocument()
+  })
+
+  it("has a restaurants link", () => {
+    render(
+      <BrowserRouter>
+        <Navigation />
+      </BrowserRouter>        
+    )
+    userEvent.click(screen.getByText('Restaurants'))
+    expect(screen.getByText('Restaurants')).toBeInTheDocument()
   })
 
   
