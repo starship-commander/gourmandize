@@ -1,9 +1,10 @@
 require 'faker'
 
-20.times do |id|
+10.times do |id|
   User.create!(
     email: Faker::Internet.email,
-    password: Faker::Internet.password(min_length: 6, max_length: 20)
+    password: Faker::Internet.password(min_length: 6, max_length: 20),
+    username: Faker::Internet.username
   )
 end
 
@@ -20,7 +21,7 @@ end
     price_range: Faker::Number.within(range: 1..4),
     menu_link: Faker::Internet.url,
     images: Faker::Internet.url,
-    user_id: Faker::Number.within(range: 1..20)
+    user_id: Faker::Number.within(range:1..10)
   )
 end
 
@@ -29,7 +30,7 @@ end
     meal: Faker::Food.dish,
     content: Faker::Restaurant.review,
     rating: Faker::Number.within(range: 1..5),
-    user_id: Faker::Number.within(range: 1..20),
+    user_id: Faker::Number.within(range:1..10),
     restaurant_id: Faker::Number.within(range: 1..20),
   )
 end

@@ -82,25 +82,10 @@ A typical day:
 
 ### Initial Setup
 
-## package.json
-{
-  "dependencies": {
-    "@babel/preset-react": "^7.18.6",
-    "@rails/activestorage": "^7.0.4-2",
-    "@rails/ujs": "^7.0.4-2",
-    "@rails/webpacker": "5.4.4",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "jest": "^29.4.2",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1",
-    "react_ujs": "^2.6.2",
-    "reactstrap": "^9.1.5",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
-  },
-  "devDependencies": {
-    "webpack-dev-server": "^3"
-  }
-}
+## Resource for devise username
+
+https://github.com/heartcombo/devise/wiki/How-To%3A-Allow-users-to-sign-in-using-their-username-or-email-address
+
+## Resource for Faker
+
+https://github.com/faker-ruby/faker
