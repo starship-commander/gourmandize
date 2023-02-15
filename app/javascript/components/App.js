@@ -15,6 +15,7 @@ import ReviewNew from "./pages/ReviewNew"
 import ReviewShow from "./pages/ReviewShow"
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
+import MyPosts from "./pages/MyPosts"
 
 
 
@@ -32,6 +33,7 @@ const App = (props) => {
         <Route path='/reviewshow' element={<ReviewShow />} />
         <Route path='/reviewnew' element={<ReviewNew />} />
         <Route path='/reviewedit' element={<ReviewEdit />} />
+        <Route path='/myposts' element={<MyPosts />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

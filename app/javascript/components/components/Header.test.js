@@ -5,7 +5,10 @@ import { BrowserRouter } from "react-router-dom"
 
 describe("<Header />", () => {
   it("renders without crashing", () => {
-    const div = document.createElement("div")
-    render(<Header />,div)
+    render(
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
+    )
   })
 })
