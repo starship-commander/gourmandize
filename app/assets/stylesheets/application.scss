@@ -14,3 +14,12 @@
  *= require_self
  */
 @import "bootstrap";
+
+// HOMEPAGE
+.homePic {
+  height: 50vh;
+  width: 65vw;
+  background-image: url('/assets/homeburgertemp.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+}

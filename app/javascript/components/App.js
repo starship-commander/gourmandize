@@ -24,7 +24,7 @@ const App = (props) => {
     <BrowserRouter>
       <Header {...props} />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home loggedIn={props.logged_in} currentUser={props.current_user}/>} />
         <Route path='/restaurantindex' element={<RestaurantIndex />} />
         <Route path='/restaurantshow' element={<RestaurantShow />} />
         <Route path='/restaurantnew' element={<RestaurantNew />} />
