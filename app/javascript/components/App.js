@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
@@ -19,13 +19,27 @@ import MyPosts from "./pages/MyPosts"
 
 
 
+
 const App = (props) => {
+  const [restaurants, setRestaurants] = useState([])
+  
+  useEffect(() => {
+    readRestaurants()
+  }, [])
+  const readRestaurants = () => {
+    fetch("/restaurants")
+      .then((response) => response.json())
+      .then((payload) => {
+        setRestaurants(payload)
+      })
+      .catch((error) => console.log(error))
+  }
   return(
     <BrowserRouter>
       <Header {...props} />
       <Routes>
         <Route path='/' element={<Home loggedIn={props.logged_in} currentUser={props.current_user}/>} />
-        <Route path='/restaurantindex' element={<RestaurantIndex />} />
+        <Route path='/restaurantindex' element={<RestaurantIndex restaurants={restaurants} />} />
         <Route path='/restaurantshow' element={<RestaurantShow />} />
         <Route path='/restaurantnew' element={<RestaurantNew />} />
         <Route path='/restaurantedit' element={<RestaurantEdit />} />

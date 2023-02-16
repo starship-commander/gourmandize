@@ -1,6 +1,5 @@
-import React from "react";
-import { Nav, NavItem } from "reactstrap";
-import { NavLink } from "react-router-dom"
+import React, {useState} from "react";
+import { Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 
 const Navigation = ({
   logged_in,
@@ -9,63 +8,39 @@ const Navigation = ({
   sign_in_route,
   sign_out_route
 }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   return(
     <>
       <Nav>
-        <NavItem>
-          <NavLink to="/" className="nav-link">
-            Home
-          </NavLink>
-        </NavItem>
-        {logged_in && (
-          <NavItem>
-            <a href={sign_out_route} className="nav-link">
-             Sign Out
-            </a>
-          </NavItem>
-        )}
-        {logged_in && (
-          <NavItem>
-            <NavLink to="/myposts" className="nav-link">
-              My Posts
-            </NavLink>
-          </NavItem>
-        )}
-        {logged_in && (
-          <NavItem>
-            <NavLink to="/restaurantindex" className="nav-link">
-              Restaurants 
-            </NavLink>
-          </NavItem>
-        )}
-        {!logged_in && (
-          <NavItem>
-            <NavLink to="/restaurantindex" className="nav-link">
-              Restaurants 
-            </NavLink>
-          </NavItem>
-        )}
-        {!logged_in && (
-          <NavItem>
-            <a href={sign_in_route} className="nav-link">
-              Sign In
-            </a>
-          </NavItem>
-        )}
-        {!logged_in && (
-          <NavItem>
-            <a href={new_user_route} className="nav-link">
-              Sign Up
-            </a>
-          </NavItem>
-        )}
-        {logged_in && (
-          <NavItem>
-            <NavLink to="/reviewnew" className="nav-link">
-              Write a review
-            </NavLink>
-          </NavItem>
-        )}
+        <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown} style={{zIndex:999}}>
+          <DropdownToggle caret className="dropdown">
+            Menu
+          </DropdownToggle>
+          <DropdownMenu className="drop-options">
+            {logged_in && (
+              <DropdownItem href={sign_out_route}>Sign Out</DropdownItem>
+            )}
+            {logged_in && (
+              <DropdownItem href="/myposts">My Posts</DropdownItem>
+            )}
+            {logged_in && (
+              <DropdownItem href="/restaurantindex">Restaurants</DropdownItem>
+            )}
+            {!logged_in && (
+              <DropdownItem href="/restaurantindex">Restaurants</DropdownItem>
+            )}
+            {!logged_in && (
+              <DropdownItem href={sign_in_route}>Sign In</DropdownItem>
+            )}
+            {!logged_in && (
+              <DropdownItem href={new_user_route}>Sign Up</DropdownItem>
+            )}
+            {logged_in && (
+              <DropdownItem href="/reviewnew">Write a review</DropdownItem>
+            )}
+          </DropdownMenu>
+        </Dropdown>
       </Nav>
     </>
   )
