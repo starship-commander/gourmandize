@@ -12,6 +12,16 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def update
+        review = Review.find(params[:id])
+        review.update(review_params)
+        if review.valid?
+            render json: review
+        else
+            render json: review.errors
+        end
+    end
+
     private
     def review_params
         params.require(:review).permit(:meal, :content, :rating, :user_id, :restaurant_id)
