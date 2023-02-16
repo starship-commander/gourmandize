@@ -4,15 +4,17 @@ import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem,
 
 const RestaurantIndex = ({ restaurants }) => {
     return(
-      <main>
-        <h1>Restaurants</h1>
+      <main style={{zIndex:300}}>
         <div>
-          <Card className="my-2">
+          <Card 
+            className="my-2"
+            style={{margin:'15px'}}
+          >
             <CardImg
               alt="Card image cap"
               src="https://picsum.photos/900/180"
               style={{
-                height: 180
+                height:'35vh'
               }}
               top
               width="100%"
@@ -37,14 +39,23 @@ const RestaurantIndex = ({ restaurants }) => {
             return(
           <Card
             style={{
-              width: '18rem'
+              width: '18rem',
+              display: 'inline-flex',
+              flexWrap: 'wrap',
+              margin:'15px'
             }}
             key = {index}
           >
-            <img
-              alt="Card"
-              src="https://picsum.photos/300/200"
-            />
+            <div style={{
+              height:'100%', 
+              width:'100%'
+            }}>
+              <img
+                alt="Card"
+                src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+                style={{height:'100%', width:'100%'}}
+              />
+            </div>
             <CardBody>
               <CardTitle tag="h5">
                 {restaurant.name}
@@ -55,22 +66,33 @@ const RestaurantIndex = ({ restaurants }) => {
             </CardBody>
             <ListGroup flush>
               <ListGroupItem>
-                An item
+                Average Rating: 
+                {(restaurant.avg_rating >= 1 && restaurant.avg_rating < 2) && '★☆☆☆☆'}
+                {(restaurant.avg_rating >= 2 && restaurant.avg_rating < 3) && '★★☆☆☆'}
+                {(restaurant.avg_rating >= 3 && restaurant.avg_rating < 4) && '★★★☆☆'}
+                {(restaurant.avg_rating >= 4 && restaurant.avg_rating < 5) && '★★★★☆'}
+                {restaurant.avg_rating === 5 && '★★★★★'}
+                <br />
+                Total Reviews: {restaurant.number_of_reviews}
               </ListGroupItem>
               <ListGroupItem>
-                A second item
+                {restaurant.cuisine}
               </ListGroupItem>
               <ListGroupItem>
-                And a third item
+                Price Range: 
+                {restaurant.price_range === 1 && ' $'}
+                {restaurant.price_range === 2 && ' $$'}
+                {restaurant.price_range === 3 && ' $$$'}
+                {restaurant.price_range === 4 && ' $$$$'}
               </ListGroupItem>
             </ListGroup>
-            <CardBody>
-              <CardLink href="#">
-                Card Link
-              </CardLink>
-              <CardLink href="#">
-                Another Card Link
-              </CardLink>
+            <CardBody style={{
+              display:'flex', 
+              justifyContent:'center'
+            }}>
+              <button className="button">
+                See More
+              </button>
             </CardBody>
           </Card>
          ) })}

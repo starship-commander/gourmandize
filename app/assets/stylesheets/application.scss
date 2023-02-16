@@ -23,3 +23,30 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.button {
+  border-radius: 20px;
+  border: 1.5px solid rgb(62, 62, 62);
+  background-color: rgb(230, 230, 230);
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: rgb(92, 92, 92);
+  color:rgb(253, 253, 253)
+}
+
+.dropdown {
+  background-color: #33ffd0;
+  color: #2e2e2e;
+  border-radius: 10px;
+  height: 4vh;
+  font-size: 1.7vmin;
+}
+
+.header {
+  background-color: #2e2e2e;
+  height: 6vh;
+  display: flex;
+}

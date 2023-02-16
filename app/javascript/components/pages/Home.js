@@ -4,10 +4,10 @@ const Home = ({ loggedIn, currentUser }) => {
     return(
       <>
         <div style={{textAlign:'center'}}>
-          {!loggedIn && <h1>Welcome to Gourmandize</h1>}
-          {!loggedIn && <h1>Sign up today for free!</h1>}
-          {loggedIn && <h1>Welcome back, {currentUser.username}</h1>}
-          {loggedIn && <h1>What are we eating today?</h1>}
+          {!loggedIn && <h1 style={{fontSize:'3vmax'}}>Welcome to Gourmandize</h1>}
+          {!loggedIn && <h1 style={{fontSize:'3vmax'}}>Sign up today for free!</h1>}
+          {loggedIn && <h1 style={{fontSize:'3vmax'}}>Welcome back, {currentUser.username}</h1>}
+          {loggedIn && <h1 style={{fontSize:'3vmax'}}>What are we eating today?</h1>}
         </div>
 
         <div style={{
@@ -24,10 +24,10 @@ const Home = ({ loggedIn, currentUser }) => {
           flexDirection:'column', 
           alignItems:'center'
         }}>
-          <p style={{marginTop:'2vh'}}>Browse the top rated</p>
-          <button style={{width:'80px'}}>Browse</button>
-          <p style={{marginTop:'2vh'}}>Or we can pick for you</p>
-          <button style={{width:'80px'}}>Random</button>
+          <p style={{marginTop:'2vh', fontSize:'2vmin'}}>Browse the top rated</p>
+          <button className="button" style={{width:'80px'}}>Browse</button>
+          <p style={{marginTop:'2vh', fontSize:'2vmin'}}>Or we can pick for you</p>
+          <button className="button" style={{width:'80px'}}>Random</button>
         </div>
       </>
     )
