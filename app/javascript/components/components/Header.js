@@ -10,7 +10,12 @@ const Header = (props) => {
           alignItems:'center',
           height:'100%'
         }}>
-          <div style={{fontSize:'2vmin', color:'#33ffd0'}}>
+          <div style={{
+            fontSize:'2vmin', 
+            color:'#33ffd0', 
+            position:'fixed', 
+            left:'2vw'
+          }}>
             Gourmandize
           </div>
         </div>

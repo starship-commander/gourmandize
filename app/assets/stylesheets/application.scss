@@ -48,7 +48,9 @@
 .header {
   background-color: #2e2e2e;
   height: 6vh;
+  width: 100%;
+  top: 0;
   display: flex;
-  position: sticky !important;
+  position: fixed !important;
   z-index: 999 !important;
 }

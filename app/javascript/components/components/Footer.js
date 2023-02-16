@@ -15,7 +15,7 @@ const Footer = () => {
           height:'3vh',
           backgroundColor:'#2e2e2e'
         }}>
-          <div style={{color:'#33ffd0'}}>
+          <div style={{color:'#33ffd0', position:'fixed', right:'2vw'}}>
             &copy; Starship Commander | Ney | Octavio | Sammy | Chris
           </div>
         </div>
