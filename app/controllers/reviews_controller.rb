@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
         if review.valid?
             render json: review
         else
-            render json: review.errors
+            render json: review.errors, status: 422
         end
     end
 
@@ -18,7 +18,17 @@ class ReviewsController < ApplicationController
         if review.valid?
             render json: review
         else
-            render json: review.errors
+            render json: review.errors, status: 422
+        end
+    end
+
+    def destroy
+        review = Review.find(params[:id])
+        if review.valid?
+            review.delete()
+            render json: review
+        else
+            render json: review.errors, status: 422
         end
     end
 
