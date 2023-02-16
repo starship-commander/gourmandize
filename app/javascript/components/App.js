@@ -22,10 +22,13 @@ import MyPosts from "./pages/MyPosts"
 
 const App = (props) => {
   const [restaurants, setRestaurants] = useState([])
+  const [reviews, setReviews] = useState([])
   
   useEffect(() => {
     readRestaurants()
+    readReviews()
   }, [])
+
   const readRestaurants = () => {
     fetch("/restaurants")
       .then((response) => response.json())
@@ -34,6 +37,16 @@ const App = (props) => {
       })
       .catch((error) => console.log(error))
   }
+
+  const readReviews = () => {
+    fetch("/reviews")
+      .then((response) => response.json())
+      .then((payload) => {
+        setReviews(payload)
+      })
+      .catch((error) => console.log(error))
+  }
+
   return(
     <BrowserRouter>
       <Header {...props} />
@@ -43,7 +56,7 @@ const App = (props) => {
         <Route path='/restaurantshow' element={<RestaurantShow />} />
         <Route path='/restaurantnew' element={<RestaurantNew />} />
         <Route path='/restaurantedit' element={<RestaurantEdit />} />
-        <Route path='/reviewindex' element={<ReviewIndex />} />
+        <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} />} />
         <Route path='/reviewshow' element={<ReviewShow />} />
         <Route path='/reviewnew' element={<ReviewNew />} />
         <Route path='/reviewedit' element={<ReviewEdit />} />

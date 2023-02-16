@@ -32,5 +32,6 @@ end
     rating: Faker::Number.within(range: 1..5),
     user_id: Faker::Number.within(range:1..10),
     restaurant_id: Faker::Number.within(range: 1..20),
+    image: Faker::Internet.url 
   )
 end

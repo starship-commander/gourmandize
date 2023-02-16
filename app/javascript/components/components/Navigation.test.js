@@ -19,8 +19,8 @@ describe("<Navigation />", () => {
         <Navigation />
       </BrowserRouter>
     )
-    userEvent.click(screen.getByText("Home"))
-    expect(screen.getByText("Home")).toBeInTheDocument()
+    userEvent.click(screen.getByText("Menu"))
+    expect(screen.getByText("Menu")).toBeInTheDocument()
   })
   
   it("has a sign in link", () => {
