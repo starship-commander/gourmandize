@@ -20,7 +20,16 @@ describe("<ReviewIndex />", () => {
   it("has a card title", () => {
     const div = document.createElement("div")
     render(<ReviewIndex reviews={review} />,div)
-    screen.logTestingPlaygroundURL()
     expect(screen.getByRole('heading', { name: /cheeseburger/i })).toBeInTheDocument()
+  })
+  it("has a rating title", () => {
+    const div = document.createElement("div")
+    render(<ReviewIndex reviews={review} />,div)
+    expect(screen.getByText(/rating:★★★★★/i)).toBeInTheDocument()
+  })
+  it("has a rating title", () => {
+    const div = document.createElement("div")
+    render(<ReviewIndex reviews={review} />,div)
+    expect(screen.getByText(/cheeseburger was delicious, and biggg!/i)).toBeInTheDocument()
   })
 })
