@@ -38,4 +38,47 @@ RSpec.describe "Reviews", type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe "POST /create" do
+    it 'creates a review' do
+      User.create(
+        email: 'cheesy_boy@email.com',
+        password: 'cheese',
+        password_confirmation: 'cheese',
+        username: 'CheesyBoy'
+      )
+      user = User.first
+
+      restaurant = Restaurant.create(
+        name: 'Best Cheeseburger',
+        cuisine: 'Cheeseburger',
+        street: '123 ABC Rd',
+        city: 'Cheeseburgertown',
+        state: 'Cheeseburgerfornia',
+        zip_code: '90210',
+        avg_rating: 4.9,
+        number_of_reviews: 1000,
+        price_range: 1,
+        menu_link: 'best_cheeseburger@cheeseburger.com',
+        images: 'picture_of_cheeseburger.png',
+        user_id: user.id
+      )
+      
+      review_params = {
+        review: {
+          meal: 'Cheeseburger',
+          content: 'The cheeseburger was the best I have ever had in my entire life.',
+          rating: 5,
+          user_id: user.id,
+          restaurant_id: restaurant.id
+        }
+      }
+      post '/reviews', params: review_params
+      expect(response).to have_http_status(200)
+      review=Review.first
+      expect(review.meal).to eq 'Cheeseburger'
+      expect(review.rating).to eq 5
+      expect(Review.count).to eq 1
+    end
+  end
 end

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1676501845694" clover="3.2.0">
+  <project timestamp="1676501845694" name="All files">
+    <metrics statements="26" coveredstatements="26" conditionals="22" coveredconditionals="16" methods="13" coveredmethods="13" elements="61" coveredelements="55" complexity="0" loc="26" ncloc="26" packages="2" files="13" classes="13"/>
+    <package name="components">
+      <metrics statements="6" coveredstatements="6" conditionals="14" coveredconditionals="10" methods="3" coveredmethods="3"/>
+      <file name="Footer.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/components/Footer.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="Header.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/components/Header.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+      </file>
+      <file name="Navigation.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/components/Navigation.js">
+        <metrics statements="2" coveredstatements="2" conditionals="14" coveredconditionals="10" methods="1" coveredmethods="1"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages">
+      <metrics statements="20" coveredstatements="20" conditionals="8" coveredconditionals="6" methods="10" coveredmethods="10"/>
+      <file name="Home.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/Home.js">
+        <metrics statements="2" coveredstatements="2" conditionals="8" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+      </file>
+      <file name="NotFound.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/NotFound.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="RestaurantEdit.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/RestaurantEdit.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="RestaurantIndex.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/RestaurantIndex.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="RestaurantNew.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/RestaurantNew.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="RestaurantShow.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/RestaurantShow.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="ReviewEdit.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/ReviewEdit.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="ReviewIndex.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/ReviewIndex.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="ReviewNew.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/ReviewNew.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="ReviewShow.js" path="/Users/learnacademy/Desktop/gourmandize/app/javascript/components/pages/ReviewShow.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
