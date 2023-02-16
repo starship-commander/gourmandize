@@ -1,15 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe "Reviews", type: :request do
+
   describe "GET /index" do
     it 'gets all reviews' do
-      user = User.create(
+      User.create(
         email: 'cheesy_boy@email.com',
         password: 'cheese',
         username: 'CheesyBoy'
       )
+      user = User.first
 
-      restaurant = Restaurant.create(
+      Restaurant.create(
         name: 'Best Cheeseburger',
         cuisine: 'Cheeseburger',
         street: '123 ABC Rd',
@@ -23,14 +25,16 @@ RSpec.describe "Reviews", type: :request do
         images: 'picture_of_cheeseburger.png',
         user_id: user.id
       )
+      restaurant = Restaurant.first
 
-      review = Review.create(
+      Review.create(
         meal: 'cheeseburger',
         content: 'The cheeseburger was delicious, and fresh!',
         rating: 5,
         user_id: user.id,
         restaurant_id: restaurant.id
       )
+      review = Review.first
 
       get '/reviews' 
       reviews = JSON.parse(response.body)
@@ -137,6 +141,52 @@ RSpec.describe "Reviews", type: :request do
       expect(response).to have_http_status(200)
       updated_review = Review.first
       expect(updated_review.meal).to eq 'Hamburger'
+    end
+  end
+
+  describe 'DELETE /destroy/:id' do
+
+    it 'deletes a review' do
+      User.create(
+        email: 'cheesy_boy@email.com',
+        password: 'cheese',
+        password_confirmation: 'cheese',
+        username: 'CheesyBoy'
+      )
+      user = User.first
+
+      restaurant = Restaurant.create(
+        name: 'Best Cheeseburger',
+        cuisine: 'Cheeseburger',
+        street: '123 ABC Rd',
+        city: 'Cheeseburgertown',
+        state: 'Cheeseburgerfornia',
+        zip_code: '90210',
+        avg_rating: 4.9,
+        number_of_reviews: 1000,
+        price_range: 1,
+        menu_link: 'best_cheeseburger@cheeseburger.com',
+        images: 'picture_of_cheeseburger.png',
+        user_id: user.id
+      )
+
+      review_params = {
+        review: {
+          meal: 'Cheeseburger',
+          content: 'The cheeseburger was the best I have ever had in my entire life.',
+          rating: 5,
+          user_id: user.id,
+          restaurant_id: restaurant.id
+        }
+      }
+
+      post '/reviews', params: review_params
+      expect(response).to have_http_status(200)
+      review = Review.first
+      expect(review.meal).to eq 'Cheeseburger'
+
+      delete "/reviews/#{review.id}"
+      expect(Review.all.length).to eq 0
     end
   end
 end
