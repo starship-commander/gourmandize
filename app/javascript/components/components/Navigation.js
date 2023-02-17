@@ -36,9 +36,6 @@ const Navigation = ({
             {!logged_in && (
               <DropdownItem href={new_user_route}>Sign Up</DropdownItem>
             )}
-            {logged_in && (
-              <DropdownItem href="/reviewnew">Write a review</DropdownItem>
-            )}
           </DropdownMenu>
         </Dropdown>
       </Nav>

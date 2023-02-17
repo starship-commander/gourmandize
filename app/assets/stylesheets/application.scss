@@ -64,3 +64,14 @@
   width: 70vw;
   min-width: 700px;
 }
+
+.menuLink {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.menuLink:hover {
+  color: white;
+}
