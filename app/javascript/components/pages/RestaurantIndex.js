@@ -1,10 +1,13 @@
-import React from "react";
-import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink} from "reactstrap";
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
+import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, Button} from "reactstrap";
+import { NavLink } from "react-router-dom";
 
 
 const RestaurantIndex = ({ restaurants }) => {
+
     return(
-      <main style={{zIndex:300}}>
+      <main>
         <div>
           <Card 
             className="my-2"
@@ -91,7 +94,9 @@ const RestaurantIndex = ({ restaurants }) => {
               justifyContent:'center'
             }}>
               <button className="button">
-                See More
+                <NavLink to={`/restaurantshow/${restaurant.id}`} style={{textDecoration:'none', color:'black'}}>
+                  See More
+                </NavLink>
               </button>
             </CardBody>
           </Card>

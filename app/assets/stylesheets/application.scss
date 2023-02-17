@@ -34,7 +34,7 @@
 
 .button:hover {
   background-color: rgb(92, 92, 92);
-  color:rgb(253, 253, 253)
+  color:rgb(253, 253, 253) !important;
 }
 
 .dropdown {
@@ -57,4 +57,21 @@
 
 .page-body {
   margin-top: 6vh;
+}
+
+// SHOW PAGE
+.show-carousel {
+  width: 70vw;
+  min-width: 700px;
+}
+
+.menuLink {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.menuLink:hover {
+  color: white;
 }

@@ -6,8 +6,11 @@ import { screen } from "@testing-library/react"
 
 describe("<RestaurantIndex />", () => {
   it("renders without crashing", () => {
-    const div = document.createElement("div")
-    render(<RestaurantIndex />,div)
+    render(
+      <BrowserRouter>
+        <RestaurantIndex restaurants={restaurants}/>
+      </BrowserRouter>
+    )
   })
   const restaurants = [{
     name: 'Best Cheeseburger',
@@ -24,16 +27,21 @@ describe("<RestaurantIndex />", () => {
         user_id: 1
   }]
   it("todays top pick", () => {
-    const div = document.createElement("div")
-    render(<RestaurantIndex restaurants={restaurants}/>,div)
+    render(
+      <BrowserRouter>
+        <RestaurantIndex restaurants={restaurants}/>
+      </BrowserRouter>
+    )
     screen.logTestingPlaygroundURL()
     expect(screen.getByRole('heading', {name: /todays top pick/i})).toBeInTheDocument()
   })
 
   it("has a card title", () => {
-    const div = document.createElement("div")
-    render(<RestaurantIndex restaurants={restaurants}/>,div)
-    screen.logTestingPlaygroundURL()
+    render(
+      <BrowserRouter>
+        <RestaurantIndex restaurants={restaurants}/>
+      </BrowserRouter>
+    )
     expect(screen.getByRole('heading', {name: /best cheeseburger/i})).toBeInTheDocument()
   })
   

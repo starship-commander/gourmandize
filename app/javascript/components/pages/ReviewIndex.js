@@ -1,7 +1,11 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink} from "reactstrap"
 
 const ReviewIndex = ({ reviews }) => {
+
+  const {id} = useParams()
+
   let timeUnit = "days"
   let displayedTime = 0
 
@@ -22,21 +26,31 @@ const ReviewIndex = ({ reviews }) => {
     }
   }
 
+  const CardContainer = ({children}) => {
+    return(
+      <div style={{
+        display:'flex', 
+        flexDirection:'row', 
+        flexWrap:'wrap', 
+        justifyContent:'space-evenly', 
+        width:'300px', 
+        margin:'10px'
+      }}>
+        {children}
+      </div>
+    )
+  }
+
   return(
     <>
-        <h1 className="page-body">ReviewIndex</h1>
+      <CardContainer>
         <main>
-          {reviews?.map((review, index) => { 
-            postTime(review)
-            // When working on RestaurantShow card: need to add functionality to only map over current restaurant reviews. Change h1 tag to display restaurant name (note: might need to use conditional rendering to access restaurant attributes. Also need to pull username)
+        {reviews?.map((review, index) => { 
+          postTime(review)
             return(
-            <Card
-              style={{
-                width: '18rem',
-                display: 'inline-flex',
-                flexWrap: 'wrap',
-                margin:'15px'
-              }}
+            <Card style={{
+              // display:'flex'
+            }}
               key = {index}
             >
               <div style={{
@@ -63,7 +77,7 @@ const ReviewIndex = ({ reviews }) => {
                   <br />
                 </CardText>
                 <CardText>
-                  {review.content}
+                  {review.content.length > 80 ? review.content.slice(0, 80) + "..." : review.content}
                 </CardText>
               </CardBody>
               <ListGroup flush>
@@ -83,8 +97,11 @@ const ReviewIndex = ({ reviews }) => {
                 </button>
               </CardBody>
             </Card>
-          )})}
-        </main>
+          )
+        // Also need to pull username
+      })}
+      </main>
+      </CardContainer>
       </>
     )
   }
