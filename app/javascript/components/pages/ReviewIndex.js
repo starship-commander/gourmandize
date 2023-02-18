@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink} from "reactstrap"
+import { NavLink } from "react-router-dom"
 
 const ReviewIndex = ({ reviews }) => {
 
@@ -93,7 +94,9 @@ const ReviewIndex = ({ reviews }) => {
                 justifyContent:'center'
               }}>
                 <button className="button">
-                  See More
+                  <NavLink to={`/reviewshow/${review.id}`} style={{textDecoration:'none', color:'black'}}>
+                    See More
+                  </NavLink>
                 </button>
               </CardBody>
             </Card>
