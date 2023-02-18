@@ -55,7 +55,7 @@ const App = (props) => {
         <Route path='/restaurantnew' element={<RestaurantNew />} />
         <Route path='/restaurantedit' element={<RestaurantEdit />} />
         <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} />} />
-        <Route path='/reviewshow/:id' element={<ReviewShow />} />
+        <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews}/>} />
         <Route path='/reviewnew' element={<ReviewNew />} />
         <Route path='/reviewedit' element={<ReviewEdit />} />
         {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} />} />}
