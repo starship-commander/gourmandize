@@ -44,7 +44,22 @@ const App = (props) => {
       })
       .catch((error) => console.log(error))
   }
-  console.log(restaurants)
+
+  const createReview = (reviewObj) => {
+    console.log(reviewObj)
+    fetch("/reviews", {
+      body: JSON.stringify(reviewObj),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+      .then(response => response.json())
+      .then(payload => readReviews())
+      .catch(errors => console.log("createReview errors:", errors))
+  }
+  
+
   return(
     <BrowserRouter>
       <Header {...props} />
@@ -56,7 +71,7 @@ const App = (props) => {
         <Route path='/restaurantedit' element={<RestaurantEdit />} />
         <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} />} />
         <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews}/>} />
-        <Route path='/reviewnew' element={<ReviewNew />} />
+        <Route path='/reviewnew/:id' element={<ReviewNew currentUser={props.current_user} restaurants={restaurants} createReview={createReview} />} />
         <Route path='/reviewedit' element={<ReviewEdit />} />
         {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} />} />}
         <Route path='*' element={<NotFound />} />

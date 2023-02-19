@@ -30,29 +30,24 @@ describe("<ReviewShow />", () => {
   })
   it("includes meal", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByRole('heading', {
       name: /cheeseburger/i
     })).toBeInTheDocument()
   })
   it("includes content", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByText(/cheeseburger was delicious, and biggg!/i)).toBeInTheDocument()
   })
   it("includes rating", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByText(/my rating:★★★★★/i)).toBeInTheDocument()
   })
   it("includes date posted", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByText(/posted 0 days ago/i)).toBeInTheDocument()
   })
   it("includes back button", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByRole('link', {
       name: /back/i
     })).toBeInTheDocument()
