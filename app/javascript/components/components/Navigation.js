@@ -19,16 +19,16 @@ const Navigation = ({
           </DropdownToggle>
           <DropdownMenu className="drop-options">
             {logged_in && (
-              <DropdownItem href={sign_out_route}>Sign Out</DropdownItem>
-            )}
+              <DropdownItem href="/restaurantindex">Restaurants</DropdownItem>
+              )}
+            {!logged_in && (
+              <DropdownItem href="/restaurantindex">Restaurants</DropdownItem>
+              )}
             {logged_in && (
               <DropdownItem href="/myposts">My Posts</DropdownItem>
             )}
             {logged_in && (
-              <DropdownItem href="/restaurantindex">Restaurants</DropdownItem>
-            )}
-            {!logged_in && (
-              <DropdownItem href="/restaurantindex">Restaurants</DropdownItem>
+              <DropdownItem href={sign_out_route}>Sign Out</DropdownItem>
             )}
             {!logged_in && (
               <DropdownItem href={sign_in_route}>Sign In</DropdownItem>

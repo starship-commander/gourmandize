@@ -24,12 +24,29 @@
   background-repeat: no-repeat;
 }
 
+.to-home {
+  display:flex; 
+  justify-content:flex-start;
+  width:15vw;
+  margin-left:15px;
+  position:fixed;
+  top:1.5vh;
+  transition: 0.2s ease-in-out;
+  color:#33ffd0;
+  cursor: pointer;
+}
+
+.to-home:hover {
+  color: white;
+}
+
 .button {
   border-radius: 20px;
   border: 1.5px solid rgb(62, 62, 62);
   background-color: rgb(230, 230, 230);
   font-weight: bold;
   transition: 0.2s ease-in-out;
+  height: 35px
 }
 
 .button:hover {
@@ -74,4 +91,11 @@
 
 .menuLink:hover {
   color: white;
+}
+
+.card {
+  width: 16rem !important;
+  min-width: 20vw !important;
+  margin: 2%;
+  height: 500px !important
 }

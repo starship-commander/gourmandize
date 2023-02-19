@@ -30,12 +30,12 @@ const ReviewIndex = ({ reviews }) => {
   const CardContainer = ({children}) => {
     return(
       <div style={{
-        display:'flex', 
+        display:'inline-flex', 
         flexDirection:'row', 
         flexWrap:'wrap', 
         justifyContent:'space-evenly', 
-        width:'300px', 
-        margin:'10px'
+        width:'100%',
+        marginTop:'5vh'
       }}>
         {children}
       </div>
@@ -45,25 +45,24 @@ const ReviewIndex = ({ reviews }) => {
   return(
     <>
       <CardContainer>
-        <main>
+        <main style={{
+          height:'100%', 
+          width:'100%', 
+          display:'inline-flex', 
+          flexWrap:'wrap',
+          justifyContent:'space-around'
+        }}>
         {reviews?.map((review, index) => { 
           postTime(review)
             return(
-            <Card style={{
-              // display:'flex'
-            }}
+            <Card
               key = {index}
             >
-              <div style={{
-                height:'100%', 
-                width:'100%'
-              }}>
-                <img
-                  alt="Card"
-                  src="/assets/homeburgertemp.jpg"
-                  style={{height:'100%', width:'100%'}}
-                />
-              </div>
+              <CardImg 
+                alt='review card image'
+                src='/assets/homeburgertemp.jpg'
+                style={{height:'40%'}}
+              />
               <CardBody>
                 <CardTitle tag="h5">
                   {review.meal}
@@ -78,7 +77,7 @@ const ReviewIndex = ({ reviews }) => {
                   <br />
                 </CardText>
                 <CardText>
-                  {review.content.length > 80 ? review.content.slice(0, 80) + "..." : review.content}
+                  {review.content.length > 50 ? review.content.slice(0, 50) + "..." : review.content}
                 </CardText>
               </CardBody>
               <ListGroup flush>

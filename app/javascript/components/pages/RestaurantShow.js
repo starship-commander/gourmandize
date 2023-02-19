@@ -49,10 +49,9 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews }) => {
               {loggedIn && <button className='button' onClick={handleClickReview}>Write a Review</button>}
             </div>
           </div>
-          <h3>See what other <span style={{fontWeight:'bold'}}>Gourmandizers</span> are saying:</h3>
-          <div style={{display:'inline-flex', flexWrap:'wrap'}}>
-            {<ReviewIndex reviews={filtered} restaurants={restaurants} />}
-          </div>
+          <br />
+          <h3 style={{overflow:'hidden', marginLeft:'15px'}}>See what other <span style={{fontWeight:'bold'}}>Gourmandizers</span> are saying:</h3>
+          {<ReviewIndex reviews={filtered} restaurants={restaurants} />}
         </>
       )}
     </main>
