@@ -13,6 +13,7 @@ const ReviewNew = ({ currentUser, restaurants, createReview }) => {
     rating: "",
     content: "",
     image: "",
+    username: currentUser.username,
     user_id: currentUser.id,
     restaurant_id: +id
   })
