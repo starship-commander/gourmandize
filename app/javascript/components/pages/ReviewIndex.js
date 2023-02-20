@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink} from "reactstrap"
+import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink, Button} from "reactstrap"
 import { NavLink } from "react-router-dom"
 
 const ReviewIndex = ({ reviews }) => {
@@ -35,7 +35,6 @@ const ReviewIndex = ({ reviews }) => {
         flexWrap:'wrap', 
         justifyContent:'space-evenly', 
         width:'100%',
-        marginTop:'5vh'
       }}>
         {children}
       </div>
@@ -57,6 +56,12 @@ const ReviewIndex = ({ reviews }) => {
             return(
             <Card
               key = {index}
+              style={{
+                width: '16rem',
+                minWidth: '20vw',
+                margin: '2%',
+                height: '520px'
+              }}
             >
               <CardImg 
                 alt='review card image'
@@ -64,10 +69,10 @@ const ReviewIndex = ({ reviews }) => {
                 style={{height:'40%'}}
               />
               <CardBody>
-                <CardTitle tag="h5">
+                <CardTitle tag="h5" style={{height:'2.5rem'}}>
                   {review.meal}
                 </CardTitle>
-                <CardText>
+                <CardText style={{height:'1rem'}}>
                   Rating: 
                   {(review.rating >= 1 && review.rating < 2) && '★☆☆☆☆'}
                   {(review.rating >= 2 && review.rating < 3) && '★★☆☆☆'}
@@ -76,7 +81,7 @@ const ReviewIndex = ({ reviews }) => {
                   {review.rating === 5 && '★★★★★'}
                   <br />
                 </CardText>
-                <CardText>
+                <CardText style={{height:'3.5rem'}}>
                   {review.content.length > 50 ? review.content.slice(0, 50) + "..." : review.content}
                 </CardText>
               </CardBody>

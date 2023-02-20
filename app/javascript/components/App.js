@@ -64,13 +64,13 @@ const App = (props) => {
     <BrowserRouter>
       <Header {...props} />
       <Routes>
-        <Route path='/' element={<Home loggedIn={props.logged_in} currentUser={props.current_user}/>} />
+        <Route path='/' element={<Home loggedIn={props.logged_in} currentUser={props.current_user} restaurants={restaurants} />} />
         <Route path='/restaurantindex' element={<RestaurantIndex restaurants={restaurants} />} />
         <Route path='/restaurantshow/:id' element={<RestaurantShow restaurants={restaurants} reviews={reviews} loggedIn={props.logged_in} />} />
         <Route path='/restaurantnew' element={<RestaurantNew />} />
         <Route path='/restaurantedit' element={<RestaurantEdit />} />
         <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} />} />
-        <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews}/>} />
+        <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews} restaurants={restaurants} />} />
         <Route path='/reviewnew/:id' element={<ReviewNew currentUser={props.current_user} restaurants={restaurants} createReview={createReview} />} />
         <Route path='/reviewedit' element={<ReviewEdit />} />
         {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} />} />}

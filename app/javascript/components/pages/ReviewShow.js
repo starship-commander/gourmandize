@@ -1,12 +1,31 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Card, CardBody, CardText, CardImg, CardTitle } from "reactstrap";
 
-const ReviewShow = ({ reviews }) => {
+const ReviewShow = ({ reviews, restaurants }) => {
   const { id } = useParams()
-  const currentReview = reviews?.find(review => review.id === +id)
+  const [isLoading, setIsLoading] = useState(true)
+  const [currentReview, setCurrentReview] = useState(null)
+  const [whichRestaurant, setWhichRestaurant] = useState(null)
+
   let timeUnit = "days"
   let displayedTime = 0
+
+  useEffect(() => {
+    const review = reviews?.find(review => review.id === +id)
+    setCurrentReview(review)
+    setIsLoading(false)
+  }, [id, reviews])
+
+  useEffect(() => {
+    const restaurant = restaurants?.find(restaurant => restaurant.id === currentReview?.restaurant_id)
+    setWhichRestaurant(restaurant)
+  }, [currentReview, restaurants])
+
+  const navigate = useNavigate()
+  const toRestaurant = () => {
+    navigate(`/restaurantshow/${whichRestaurant.id}`)
+  }
 
   const postTime = (review) => {
     const startDate = Date.now()
@@ -24,9 +43,18 @@ const ReviewShow = ({ reviews }) => {
       }
     }
   }
+
+  const handleGoBack = () => {
+    navigate(-1)
+  }
+
+  if(isLoading) {
+    return <div>Loading...</div>
+  }
+
   return(
     <main>
-      {currentReview && (
+      {(currentReview && whichRestaurant) && (
         <>
           {postTime(currentReview)}
           <h3 className="page-body">Gourmandizer says:</h3>
@@ -51,6 +79,10 @@ const ReviewShow = ({ reviews }) => {
               </CardText>
               <br />
               <CardText>
+                From: <span  className='restaurant-name' onClick={toRestaurant}>{whichRestaurant.name}</span>
+              </CardText>
+              <br />
+              <CardText>
                 My Rating:
                 <br />
                 {(currentReview.rating >= 1 && currentReview.rating < 2) && '★☆☆☆☆'}
@@ -66,8 +98,9 @@ const ReviewShow = ({ reviews }) => {
                 </small>
               </CardText>
             </CardBody>
-            <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px'}}>
-              <a className="menuLink" href={`/restaurantshow/${currentReview.restaurant_id}`}>Back</a>
+            <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px'}} onClick={handleGoBack}>
+              {/* <a className="menuLink" onClick={handleGoBack}>Back</a> */}
+              Back
             </button>
           </Card>
         </>

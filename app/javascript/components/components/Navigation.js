@@ -14,7 +14,7 @@ const Navigation = ({
     <>
       <Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown} style={{zIndex:999}}>
-          <DropdownToggle caret className="dropdown">
+          <DropdownToggle caret className="dropdown" style={{fontSize:'0.8rem'}}>
             Menu
           </DropdownToggle>
           <DropdownMenu className="drop-options">

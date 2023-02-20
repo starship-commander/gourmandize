@@ -32,7 +32,7 @@
   position:fixed;
   top:1.5vh;
   transition: 0.2s ease-in-out;
-  color:#33ffd0;
+  color:rgb(12, 243, 255);
   cursor: pointer;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .dropdown {
-  background-color: #33ffd0;
+  background-color: rgb(12, 243, 255);
   color: #2e2e2e;
   border-radius: 10px;
   height: 4vh;
@@ -93,9 +93,25 @@
   color: white;
 }
 
-.card {
-  width: 16rem !important;
-  min-width: 20vw !important;
-  margin: 2%;
-  height: 500px !important
+.card-body {
+  height: 250px !important;
+}
+
+.restaurant-name {
+  color: rgb(7, 114, 255);
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
+.restaurant-name:hover {
+  color:#4d4d4d
+}
+
+.logo {
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.logo:hover {
+  opacity: 50%;
 }

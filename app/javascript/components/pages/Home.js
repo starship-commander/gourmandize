@@ -1,11 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Home = ({ loggedIn, currentUser }) => {
+const Home = ({ loggedIn, currentUser, restaurants }) => {
 
   const navigate = useNavigate()
   const toIndex = () => {
     navigate('/restaurantindex')
+  }
+
+  const randomNum = Math.floor(Math.random() * restaurants.length)
+
+  const toRandom = () => {
+    navigate(`/restaurantshow/${randomNum}`)
   }
 
     return(
@@ -34,7 +40,7 @@ const Home = ({ loggedIn, currentUser }) => {
           <p style={{marginTop:'2vh', fontSize:'2vmin'}}>Browse Restaurants</p>
           <button onClick={toIndex} className="button" style={{width:'80px'}}>Browse</button>
           <p style={{marginTop:'2vh', fontSize:'2vmin'}}>Or we can pick for you</p>
-          <button className="button" style={{width:'80px'}}>Random</button>
+          <button className="button" style={{width:'80px'}} onClick={toRandom}>Random</button>
         </div>
       </main>
     )

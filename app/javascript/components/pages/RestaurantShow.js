@@ -18,15 +18,16 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews }) => {
     <main>
       {currentRestaurant && (
         <>
-          <h1 className='page-body'>{currentRestaurant.name}</h1>
+          <h1 className='page-body' style={{marginLeft:'2.7vw'}}>{currentRestaurant.name}</h1>
           <div style={{
             display:'flex',
             gap:'30px'
           }}>
-            <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" style={{height: '50vh'}}/>
+            <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" style={{height: '50vh', minWidth:'25rem', marginLeft:'2.7vw'}}/>
             <div style={{
-              height:'50vh',
+              height:'fit-content',
               width:'30vw',
+              marginTop:'10%'
             }}>
               Cuisine: {currentRestaurant.cuisine} <br />
               Address: {currentRestaurant.street}, {currentRestaurant.state} {currentRestaurant.zip_code} <br />
@@ -50,7 +51,7 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews }) => {
             </div>
           </div>
           <br />
-          <h3 style={{overflow:'hidden', marginLeft:'15px'}}>See what other <span style={{fontWeight:'bold'}}>Gourmandizers</span> are saying:</h3>
+          <h3 style={{overflow:'hidden', marginLeft:'2.7vw'}}>See what other <span style={{fontWeight:'bold'}}>Gourmandizers</span> are saying:</h3>
           {<ReviewIndex reviews={filtered} restaurants={restaurants} />}
         </>
       )}
