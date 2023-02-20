@@ -131,7 +131,7 @@ const RestaurantIndex = ({ restaurants }) => {
                   justifyContent:'center'
                 }}>
                   <button className="button">
-                    <NavLink to={`/restaurantshow/${restaurant.id}`} style={{textDecoration:'none', color:'black'}}>
+                    <NavLink to={`/restaurantshow/${restaurant.id}`} style={{textDecoration:'none'}} className='menuLink'>
                       See More
                     </NavLink>
                   </button>

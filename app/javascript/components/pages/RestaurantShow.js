@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ReviewIndex from './ReviewIndex';
 import ReviewNew from './ReviewNew';
 
-const RestaurantShow = ({ restaurants, loggedIn, reviews }) => {
+const RestaurantShow = ({ restaurants, loggedIn, reviews, currentUser }) => {
   const { id } = useParams()
   let currentRestaurant = restaurants?.find(restaurant => restaurant.id === +id)
 
@@ -11,7 +11,7 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews }) => {
   const handleClickReview = () => {
     navigate(`/reviewnew/${id}`)
   }
-  console.log(id, restaurants, currentRestaurant);
+  
   const filtered = reviews?.filter(review => review.restaurant_id === +id)
 
   return(
@@ -52,7 +52,7 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews }) => {
           </div>
           <br />
           <h3 style={{overflow:'hidden', marginLeft:'2.7vw'}}>See what other <span style={{fontWeight:'bold'}}>Gourmandizers</span> are saying:</h3>
-          {<ReviewIndex reviews={filtered} restaurants={restaurants} />}
+          {<ReviewIndex reviews={filtered} restaurants={restaurants} currentUser={currentUser} />}
         </>
       )}
     </main>

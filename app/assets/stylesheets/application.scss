@@ -46,7 +46,8 @@
   background-color: rgb(230, 230, 230);
   font-weight: bold;
   transition: 0.2s ease-in-out;
-  height: 35px
+  height: 35px;
+  width: 100px
 }
 
 .button:hover {
@@ -84,13 +85,13 @@
 
 .menuLink {
   text-decoration: none;
-  color: black;
+  color: black !important;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
 
 .menuLink:hover {
-  color: white;
+  color: white !important;
 }
 
 .card-body {

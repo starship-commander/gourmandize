@@ -32,33 +32,28 @@ const renderShow = () => {
 describe("<RestaurantShow />", () => {
   it("displays name of restaurant", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByRole('heading', {
       name: /best cheeseburger/i
     })).toBeInTheDocument()
   })
   it("displays all info", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByText(
       /cuisine: cheeseburger address: 123 abc rd, cheeseburgerfornia 90210 average: ★★★★☆ price range: \$/i
       )).toBeInTheDocument()
   })
   it("has button to see menu", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByRole('link', {
       name: /see menu/i
     })).toBeInTheDocument()
   })
   it("has an image", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByRole('img')).toBeInTheDocument()
   })
   it("has heading for reviews", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByRole('heading', {
       name: /see what other gourmandizers are saying:/i
     })).toBeInTheDocument()

@@ -26,23 +26,24 @@ describe("<RestaurantIndex />", () => {
         images: 'picture_of_cheeseburger.png',
         user_id: 1
   }]
-  it("todays top pick", () => {
+  it("todays pick", () => {
     render(
       <BrowserRouter>
         <RestaurantIndex restaurants={restaurants}/>
       </BrowserRouter>
     )
-    screen.logTestingPlaygroundURL()
-    expect(screen.getByRole('heading', {name: /todays top pick/i})).toBeInTheDocument()
+    expect(screen.getByRole('heading', {
+      name: /today's pick: best cheeseburger/i
+    })).toBeInTheDocument()
   })
 
-  it("has a card title", () => {
+  it("has a list of information about the restaurant", () => {
     render(
       <BrowserRouter>
         <RestaurantIndex restaurants={restaurants}/>
       </BrowserRouter>
     )
-    expect(screen.getByRole('heading', {name: /best cheeseburger/i})).toBeInTheDocument()
+    expect(screen.getByRole('list')).toBeInTheDocument()
   })
   
 })

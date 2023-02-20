@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink, Button} from "reactstrap"
 import { NavLink } from "react-router-dom"
 
-const ReviewIndex = ({ reviews }) => {
+const ReviewIndex = ({ reviews, currentUser }) => {
 
   const {id} = useParams()
 
@@ -43,6 +43,7 @@ const ReviewIndex = ({ reviews }) => {
 
   return(
     <>
+      {(reviews && currentUser) && (
       <CardContainer>
         <main style={{
           height:'100%', 
@@ -65,7 +66,7 @@ const ReviewIndex = ({ reviews }) => {
             >
               <CardImg 
                 alt='review card image'
-                src='/assets/homeburgertemp.jpg'
+                src={review.image}
                 style={{height:'40%'}}
               />
               <CardBody>
@@ -97,11 +98,20 @@ const ReviewIndex = ({ reviews }) => {
                 display:'flex', 
                 justifyContent:'center'
               }}>
-                <button className="button">
-                  <NavLink to={`/reviewshow/${review.id}`} style={{textDecoration:'none', color:'black'}}>
-                    See More
-                  </NavLink>
-                </button>
+                <div style={{display:'flex', justifyContent:'space-around', width:'100%'}}>
+                  <button className="button">
+                    <NavLink className='menuLink' to={`/reviewshow/${review.id}`} style={{textDecoration:'none'}}>
+                      See More
+                    </NavLink>
+                  </button>
+                  {(review.user_id === currentUser.id) && 
+                    <button className="button">
+                      <NavLink className='menuLink' to={`/reviewedit/${review.id}`} style={{textDecoration:'none'}}>
+                        Edit
+                      </NavLink>
+                    </button>
+                  }
+                </div>
               </CardBody>
             </Card>
           )
@@ -109,6 +119,7 @@ const ReviewIndex = ({ reviews }) => {
       })}
       </main>
       </CardContainer>
+      )}
       </>
     )
   }
