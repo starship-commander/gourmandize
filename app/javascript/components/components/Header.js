@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "./Navigation";
 import { useNavigate } from "react-router-dom";
-import logo from '../../../assets/images/glogo2.png'
+import logo from '../assets/glogo2.png'
 
 const Header = (props) => {
 

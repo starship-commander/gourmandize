@@ -29,7 +29,6 @@ describe("<MyPosts />", () => {
                 <MyPosts currentUser={user} reviews={review}/>
             </BrowserRouter>
         )
-        screen.logTestingPlaygroundURL()
         expect(screen.getByText(/the cheeseburger was delicious, and fresh!/i)).toBeInTheDocument()
     })
     it("has a button for see more", () => {
@@ -38,7 +37,6 @@ describe("<MyPosts />", () => {
                 <MyPosts currentUser={user} reviews={review}/>
             </BrowserRouter>
         )
-        screen.logTestingPlaygroundURL()
         expect(screen.getByRole('button', {name: /see more/i})).toBeInTheDocument()
     })
     it("has a image", () => {
@@ -47,7 +45,6 @@ describe("<MyPosts />", () => {
                 <MyPosts currentUser={user} reviews={review}/>
             </BrowserRouter>
         )
-        screen.logTestingPlaygroundURL()
         expect(screen.getByRole('img', {name: /card/i})).toBeInTheDocument()
     })
     

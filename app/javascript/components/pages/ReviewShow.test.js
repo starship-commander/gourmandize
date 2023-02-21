@@ -63,7 +63,6 @@ describe("<ReviewShow />", () => {
   })
   it("includes back button", () => {
     render(renderShow())
-    screen.logTestingPlaygroundURL()
     expect(screen.getByRole('button', {
       name: /back/i
     })).toBeInTheDocument()

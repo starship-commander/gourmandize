@@ -9,9 +9,9 @@ const NotFound = () => {
   }
     return(
       <>
-        <div class="background-container">
-          <div class="stars"></div>
-          <div class="twinkling"></div>
+        <div className="background-container">
+          <div className="stars"></div>
+          <div className="twinkling"></div>
         </div>
         <img src={burger} alt='Burger Pic' className="animated-image" style={{height:'70px', width:'70px', top:'20vh', cursor:'pointer'}} onClick={toHome} />
         <h3 style={{position:'absolute', bottom:'30vh', left:'7vw', color:'rgb(147, 147, 147)'}}>Sorry, that page was not found!</h3>
