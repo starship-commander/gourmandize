@@ -13,11 +13,27 @@ const review = [{
 
 }]
 
+const restaurants = [{
+  id: 1,
+  name: 'Best Cheeseburger',
+  cuisine: 'Cheeseburger',
+  street: '123 ABC Rd',
+  city: 'Cheeseburgertown',
+  state: 'Cheeseburgerfornia',
+  zip_code: '90210',
+  avg_rating: 4.9,
+  number_of_reviews: 1000,
+  price_range: 1,
+  menu_link: 'best_cheeseburger@cheeseburger.com',
+  images: 'picture_of_cheeseburger.png',
+  user_id: 1
+}]
+
 const renderShow = () => {
   render(
     <MemoryRouter initialEntries={["/reviewshow/1"]}>
       <Routes>
-        <Route path='reviewshow/:id' element={<ReviewShow reviews={review}/>}/>
+        <Route path='reviewshow/:id' element={<ReviewShow reviews={review} restaurants={restaurants} />}/>
       </Routes>
     </MemoryRouter>
   )
@@ -25,8 +41,7 @@ const renderShow = () => {
 
 describe("<ReviewShow />", () => {
   it("renders without crashing", () => {
-    const div = document.createElement("div")
-    render(<ReviewShow />,div)
+    renderShow()
   })
   it("includes meal", () => {
     render(renderShow())
@@ -48,7 +63,8 @@ describe("<ReviewShow />", () => {
   })
   it("includes back button", () => {
     render(renderShow())
-    expect(screen.getByRole('link', {
+    screen.logTestingPlaygroundURL()
+    expect(screen.getByRole('button', {
       name: /back/i
     })).toBeInTheDocument()
   })

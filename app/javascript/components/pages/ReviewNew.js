@@ -4,7 +4,6 @@ import { Form, FormGroup, Label, Input, FormText  } from "reactstrap"
 
 const ReviewNew = ({ currentUser, restaurants, createReview }) => {
 
-  console.log(currentUser);
   const { id } = useParams()
   let currentRestaurant = restaurants?.find(restaurant => restaurant.id === +id)
 
@@ -21,6 +20,7 @@ const ReviewNew = ({ currentUser, restaurants, createReview }) => {
   const navigate = useNavigate()
   const handleChange = (e) => {
     setNewReview({...newReview, [e.target.name]: e.target.value})
+    console.log(newReview);
   }
 
   const handleSubmit = (e) => {
@@ -93,7 +93,6 @@ const ReviewNew = ({ currentUser, restaurants, createReview }) => {
               placeholder="image URL here"
               type="text"
               onChange={handleChange}
-              value={newReview.image}
             />
           </FormGroup>
           <FormGroup>

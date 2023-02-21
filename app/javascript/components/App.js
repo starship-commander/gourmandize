@@ -58,21 +58,34 @@ const App = (props) => {
       .then(payload => readReviews())
       .catch(errors => console.log("createReview errors:", errors))
   }
+
+  const updateReview = (reviewObj, id) => {
+    fetch(`/reviews/${id}`, {
+      body: JSON.stringify(reviewObj),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+      .then(response => response.json())
+      .then(payload => readReviews())
+      .catch(errors => console.log("updateReview errors: ", errors))
+  }
   
 
   return(
     <BrowserRouter>
       <Header {...props} />
       <Routes>
-        <Route path='/' element={<Home loggedIn={props.logged_in} currentUser={props.current_user}/>} />
+        <Route path='/' element={<Home loggedIn={props.logged_in} currentUser={props.current_user} restaurants={restaurants} />} />
         <Route path='/restaurantindex' element={<RestaurantIndex restaurants={restaurants} />} />
-        <Route path='/restaurantshow/:id' element={<RestaurantShow restaurants={restaurants} reviews={reviews} loggedIn={props.logged_in} />} />
+        <Route path='/restaurantshow/:id' element={<RestaurantShow restaurants={restaurants} reviews={reviews} loggedIn={props.logged_in} currentUser={props.current_user} />} />
         <Route path='/restaurantnew' element={<RestaurantNew />} />
         <Route path='/restaurantedit' element={<RestaurantEdit />} />
-        <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} />} />
-        <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews}/>} />
+        <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} currentUser={props.current_user} />} />
+        <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews} restaurants={restaurants} />} />
         <Route path='/reviewnew/:id' element={<ReviewNew currentUser={props.current_user} restaurants={restaurants} createReview={createReview} />} />
-        <Route path='/reviewedit' element={<ReviewEdit />} />
+        <Route path='/reviewedit/:id' element={reviews.length > 0 && <ReviewEdit updateReview={updateReview} restaurants={restaurants} reviews={reviews} currentUser={props.current_user} />} />
         {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} />} />}
         <Route path='*' element={<NotFound />} />
       </Routes>

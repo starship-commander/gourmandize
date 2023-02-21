@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ReviewIndex from './ReviewIndex';
 import ReviewNew from './ReviewNew';
 
-const RestaurantShow = ({ restaurants, loggedIn, reviews }) => {
+const RestaurantShow = ({ restaurants, loggedIn, reviews, currentUser }) => {
   const { id } = useParams()
   let currentRestaurant = restaurants?.find(restaurant => restaurant.id === +id)
 
@@ -11,22 +11,23 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews }) => {
   const handleClickReview = () => {
     navigate(`/reviewnew/${id}`)
   }
-  console.log(id, restaurants, currentRestaurant);
+  
   const filtered = reviews?.filter(review => review.restaurant_id === +id)
 
   return(
     <main>
       {currentRestaurant && (
         <>
-          <h1 className='page-body'>{currentRestaurant.name}</h1>
+          <h1 className='page-body' style={{marginLeft:'2.7vw'}}>{currentRestaurant.name}</h1>
           <div style={{
             display:'flex',
             gap:'30px'
           }}>
-            <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" style={{height: '50vh'}}/>
+            <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" style={{height: '50vh', minWidth:'25rem', marginLeft:'2.7vw'}}/>
             <div style={{
-              height:'50vh',
+              height:'fit-content',
               width:'30vw',
+              marginTop:'10%'
             }}>
               Cuisine: {currentRestaurant.cuisine} <br />
               Address: {currentRestaurant.street}, {currentRestaurant.state} {currentRestaurant.zip_code} <br />
@@ -49,10 +50,9 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews }) => {
               {loggedIn && <button className='button' onClick={handleClickReview}>Write a Review</button>}
             </div>
           </div>
-          <h3>See what other <span style={{fontWeight:'bold'}}>Gourmandizers</span> are saying:</h3>
-          <div style={{display:'inline-flex', flexWrap:'wrap'}}>
-            {<ReviewIndex reviews={filtered} restaurants={restaurants} />}
-          </div>
+          <br />
+          <h3 style={{overflow:'hidden', marginLeft:'2.7vw'}}>See what other <span style={{fontWeight:'bold'}}>Gourmandizers</span> are saying:</h3>
+          {<ReviewIndex reviews={filtered} restaurants={restaurants} currentUser={currentUser} />}
         </>
       )}
     </main>

@@ -4,17 +4,34 @@ import Home from "./Home"
 import { BrowserRouter } from "react-router-dom"
 
 describe("<Home />", () => {
+
+  const restaurants = [{
+    name: 'Best Cheeseburger',
+    cuisine: 'Cheeseburger',
+    street: '123 ABC Rd',
+    city: 'Cheeseburgertown',
+    state: 'Cheeseburgerfornia',
+    zip_code: '90210',
+    avg_rating: 4.9,
+    number_of_reviews: 1000,
+    price_range: 1,
+    menu_link: 'best_cheeseburger@cheeseburger.com',
+    images: 'picture_of_cheeseburger.png',
+    user_id: 1
+  }]
+
   it("renders without crashing", () => {
     render(
       <BrowserRouter>
-        <Home />
+        <Home restaurants={restaurants}/>
       </BrowserRouter>
     )
+    screen.logTestingPlaygroundURL()
   })
   it('has a greeting', () => {
     render(
       <BrowserRouter>
-        <Home />
+        <Home restaurants={restaurants} />
       </BrowserRouter>
     )
     expect(screen.getByRole('heading', {name: /welcome to gourmandize/i})).toBeInTheDocument()
@@ -22,7 +39,7 @@ describe("<Home />", () => {
   it('tells you to sign up', () => {
     render(
       <BrowserRouter>
-        <Home />
+        <Home restaurants={restaurants} />
       </BrowserRouter>
     )
     expect(screen.getByRole('heading', {
@@ -32,7 +49,7 @@ describe("<Home />", () => {
   it('has a button for browse', () => {
     render(
       <BrowserRouter>
-        <Home />
+        <Home restaurants={restaurants} />
       </BrowserRouter>
     )
     expect(screen.getByRole('button', {
@@ -42,7 +59,7 @@ describe("<Home />", () => {
   it('has a button for random', () => {
     render(
       <BrowserRouter>
-        <Home />
+        <Home restaurants={restaurants} />
       </BrowserRouter>
     )
     expect(screen.getByRole('button', {

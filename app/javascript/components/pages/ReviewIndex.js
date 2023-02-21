@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink} from "reactstrap"
+import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink, Button} from "reactstrap"
 import { NavLink } from "react-router-dom"
 
-const ReviewIndex = ({ reviews }) => {
+const ReviewIndex = ({ reviews, currentUser }) => {
 
   const {id} = useParams()
 
@@ -30,12 +30,11 @@ const ReviewIndex = ({ reviews }) => {
   const CardContainer = ({children}) => {
     return(
       <div style={{
-        display:'flex', 
+        display:'inline-flex', 
         flexDirection:'row', 
         flexWrap:'wrap', 
         justifyContent:'space-evenly', 
-        width:'300px', 
-        margin:'10px'
+        width:'100%',
       }}>
         {children}
       </div>
@@ -44,31 +43,37 @@ const ReviewIndex = ({ reviews }) => {
 
   return(
     <>
+      {(reviews && currentUser) && (
       <CardContainer>
-        <main>
+        <main style={{
+          height:'100%', 
+          width:'100%', 
+          display:'inline-flex', 
+          flexWrap:'wrap',
+          justifyContent:'space-around'
+        }}>
         {reviews?.map((review, index) => { 
           postTime(review)
             return(
-            <Card style={{
-              // display:'flex'
-            }}
+            <Card
               key = {index}
+              style={{
+                width: '16rem',
+                minWidth: '20vw',
+                margin: '2%',
+                height: '520px'
+              }}
             >
-              <div style={{
-                height:'100%', 
-                width:'100%'
-              }}>
-                <img
-                  alt="Card"
-                  src="/assets/homeburgertemp.jpg"
-                  style={{height:'100%', width:'100%'}}
-                />
-              </div>
+              <CardImg 
+                alt='review card image'
+                src={review.image}
+                style={{height:'40%'}}
+              />
               <CardBody>
-                <CardTitle tag="h5">
+                <CardTitle tag="h5" style={{height:'2.5rem'}}>
                   {review.meal}
                 </CardTitle>
-                <CardText>
+                <CardText style={{height:'1rem'}}>
                   Rating: 
                   {(review.rating >= 1 && review.rating < 2) && '★☆☆☆☆'}
                   {(review.rating >= 2 && review.rating < 3) && '★★☆☆☆'}
@@ -77,8 +82,8 @@ const ReviewIndex = ({ reviews }) => {
                   {review.rating === 5 && '★★★★★'}
                   <br />
                 </CardText>
-                <CardText>
-                  {review.content.length > 80 ? review.content.slice(0, 80) + "..." : review.content}
+                <CardText style={{height:'3.5rem'}}>
+                  {review.content.length > 50 ? review.content.slice(0, 50) + "..." : review.content}
                 </CardText>
               </CardBody>
               <ListGroup flush>
@@ -93,11 +98,20 @@ const ReviewIndex = ({ reviews }) => {
                 display:'flex', 
                 justifyContent:'center'
               }}>
-                <button className="button">
-                  <NavLink to={`/reviewshow/${review.id}`} style={{textDecoration:'none', color:'black'}}>
-                    See More
-                  </NavLink>
-                </button>
+                <div style={{display:'flex', justifyContent:'space-around', width:'100%'}}>
+                  <button className="button">
+                    <NavLink className='menuLink' to={`/reviewshow/${review.id}`} style={{textDecoration:'none'}}>
+                      See More
+                    </NavLink>
+                  </button>
+                  {(review.user_id === currentUser.id) && 
+                    <button className="button">
+                      <NavLink className='menuLink' to={`/reviewedit/${review.id}`} style={{textDecoration:'none'}}>
+                        Edit
+                      </NavLink>
+                    </button>
+                  }
+                </div>
               </CardBody>
             </Card>
           )
@@ -105,6 +119,7 @@ const ReviewIndex = ({ reviews }) => {
       })}
       </main>
       </CardContainer>
+      )}
       </>
     )
   }
