@@ -12,8 +12,8 @@ const Header = (props) => {
 
     return(
       <main className='header'>
-        <div className="to-home" style={{fontSize:'1rem'}}>
-            <p onClick={toHome} className='to-home'>Gourmandize</p>
+        <div className="to-home" style={{fontSize:'1.2rem'}}>
+            <p onClick={toHome} className='flicker'>Gourmandize</p>
         </div>
         <div onClick={toHome} className='logo' style={{
           position:'fixed', 
