@@ -11,6 +11,7 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser}) => {
 
   let timeUnit = "days"
   let displayedTime = 0
+  
 
   useEffect(() => {
     const review = reviews?.find(review => review.id === +id)
@@ -69,7 +70,7 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser}) => {
           <Card className="my-2" style={{height:'75vh', margin:'3vh'}}>
             <CardImg
               alt="Card image cap"
-              src="https://picsum.photos/900/180"
+              src={currentReview.image}
               style={{
                 height:'45%'
               }}
@@ -109,7 +110,7 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser}) => {
             <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px'}} onClick={handleGoBack}>
               Back
             </button>
-            {(currentUser.id === currentReview.user_id) && (
+            {(currentUser?.id === currentReview.user_id) && (
             <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px', }} onClick={deleteByID}>                  
               Delete
             </button>
