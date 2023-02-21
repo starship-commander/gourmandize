@@ -26,7 +26,6 @@ describe("<Home />", () => {
         <Home restaurants={restaurants}/>
       </BrowserRouter>
     )
-    screen.logTestingPlaygroundURL()
   })
   it('has a greeting', () => {
     render(

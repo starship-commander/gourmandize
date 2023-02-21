@@ -84,7 +84,7 @@ const RestaurantIndex = ({ restaurants }) => {
                   width:'16rem',
                   height:'520px'
                 }}
-                key = {restaurant.id}
+                key = {index}
               >
                 <div style={{
                   height:'40%', 
