@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Card, CardBody, CardText, CardImg, CardTitle } from "reactstrap";
+import { NavLink } from "reactstrap";
 
-const ReviewShow = ({ reviews, restaurants }) => {
+const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser}) => {
   const { id } = useParams()
   const [isLoading, setIsLoading] = useState(true)
   const [currentReview, setCurrentReview] = useState(null)
@@ -10,6 +11,7 @@ const ReviewShow = ({ reviews, restaurants }) => {
 
   let timeUnit = "days"
   let displayedTime = 0
+  
 
   useEffect(() => {
     const review = reviews?.find(review => review.id === +id)
@@ -48,6 +50,12 @@ const ReviewShow = ({ reviews, restaurants }) => {
     navigate(-1)
   }
 
+  const deleteByID = () => {
+    deleteReview(id)
+    navigate(-1)
+
+  }
+
   if(isLoading) {
     return <div>Loading...</div>
   }
@@ -62,7 +70,7 @@ const ReviewShow = ({ reviews, restaurants }) => {
           <Card className="my-2" style={{height:'75vh', margin:'3vh'}}>
             <CardImg
               alt="Card image cap"
-              src="https://picsum.photos/900/180"
+              src={currentReview.image}
               style={{
                 height:'45%'
               }}
@@ -98,10 +106,18 @@ const ReviewShow = ({ reviews, restaurants }) => {
                 </small>
               </CardText>
             </CardBody>
+              <div>
             <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px'}} onClick={handleGoBack}>
-              {/* <a className="menuLink" onClick={handleGoBack}>Back</a> */}
               Back
             </button>
+            {(currentUser?.id === currentReview.user_id) && (
+            <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px', }} onClick={deleteByID}>                  
+              Delete
+            </button>
+
+            )}
+            </div>
+            
           </Card>
         </>
       )}

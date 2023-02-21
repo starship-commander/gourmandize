@@ -71,6 +71,19 @@ const App = (props) => {
       .then(payload => readReviews())
       .catch(errors => console.log("updateReview errors: ", errors))
   }
+  const deleteReview = (id) => {
+    fetch(`/reviews/${id}`,{
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+      .then((response) => response.json())
+      .then((payload) => {
+        readReviews(payload)
+      })
+      .catch((error) => console.log(error))
+  }
   
 
   return(
@@ -83,7 +96,7 @@ const App = (props) => {
         <Route path='/restaurantnew' element={<RestaurantNew />} />
         <Route path='/restaurantedit' element={<RestaurantEdit />} />
         <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} currentUser={props.current_user} />} />
-        <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews} restaurants={restaurants} />} />
+        <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews} restaurants={restaurants} deleteReview={deleteReview} currentUser={props.current_user}/>} />
         <Route path='/reviewnew/:id' element={<ReviewNew currentUser={props.current_user} restaurants={restaurants} createReview={createReview} />} />
         <Route path='/reviewedit/:id' element={reviews.length > 0 && <ReviewEdit updateReview={updateReview} restaurants={restaurants} reviews={reviews} currentUser={props.current_user} />} />
         {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} />} />}
