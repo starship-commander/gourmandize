@@ -19,7 +19,7 @@ const RestaurantIndex = ({ restaurants }) => {
   const randomRestaurant = () => {
     const randomIndex = Math.floor(Math.random() * restaurants.length)
     setTodaysPick(restaurants[randomIndex])
-    localStorage.setItem('lastRandomRestaurantDate', new Date().toLocaleDateString())
+    localStorage.setItem('lastRandomRestaurantDate', new Date().toLocaleTimeString())
   }
 
   const navigate = useNavigate()
@@ -27,19 +27,24 @@ const RestaurantIndex = ({ restaurants }) => {
     navigate(`/restaurantshow/${todaysPick?.id}`)
   }
 
+  const [todaysDay, setTodaysDay] = useState(localStorage.getItem('lastRandomRestaurantDate'))
+console.log(todaysDay)
+
   useEffect(() => {
     const today = new Date();
-    const day = today.getDate();
+    const day = today.getDay();
     const month = today.getMonth();
     const year = today.getFullYear();
-    const seed = day + month + year;
-    const randomIndex = Math.floor(Math.random() * restaurants.length);
-    if(today !== seed) {
+    const seed = `${month}/${day}/${year}`
+    // console.log(seed,"use effect time")
+    console.log(today.toLocaleTimeString(),"use effect time")
+    // const randomIndex = Math.floor(Math.random() * restaurants.length);
+    if(todaysDay !== today.toLocaleTimeString()) {
       randomRestaurant()
-    } else {
-      setTodaysPick(restaurants[randomIndex]);
+    // } else {
+    //   setTodaysPick(restaurants[randomIndex]);
     }
-    console.log(today);
+    console.log(day);
   }, [restaurants]);
 
     return(
