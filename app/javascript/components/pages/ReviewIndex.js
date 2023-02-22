@@ -4,7 +4,6 @@ import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem,
 import { NavLink } from "react-router-dom"
 
 const ReviewIndex = ({ reviews, currentUser, users }) => {
-  console.log('users:', users)
   const {id} = useParams()
 
   let timeUnit = "days"

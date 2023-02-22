@@ -4,25 +4,66 @@ import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem,
 import { NavLink } from "react-router-dom"
 
 
-const RestaurantIndex = ({ restaurants }) => {
-
+const RestaurantIndex = ({  }) => {
   const startIndex = 0
   const [endIndex, setEndIndex] = useState(4)
   const [todaysPick, setTodaysPick] = useState(null)
+  const [restaurants, setRestaurants] = useState([])
   const visibleRestaurants = restaurants.slice(startIndex, endIndex)
-  const restaurantRef = useRef(restaurants)
+  const [todaysDay, setTodaysDay] = useState(localStorage.getItem('lastRandomRestaurantDate'))
+  // const restaurantRef = useRef(restaurants)
+
+const readRestaurants = () => {
+  fetch("/restaurants")
+    .then((response) => response.json())
+    .then((payload) => {
+      console.log('payload:', payload)
+      setRestaurants(payload)
+      
+      
+        // randomRestaurant()
+        // const index = randomIndex(payload)
+        // setTodaysPick(payload[index])
+        randomRestaurant(payload)
+      
+      
+    })
+    .catch((error) => console.log(error))
+  }
+
+  useEffect(() => {
+
+    readRestaurants()
+    // console.log('restaurants:', restaurants)
+    // const today = new Date().getHours()
+    // if(+todaysDay != today) {
+    //   randomRestaurant()
+    // } 
+  }, [])
+
 
   const handleLoadMore = () => {
     setEndIndex(prevEndIndex => prevEndIndex + 4)
   }
 
-  const randomRestaurant = () => {
-    console.log('res', restaurants)
-    const randomIndex = Math.floor(Math.random() * restaurants.length)
-    setTodaysPick(restaurants[randomIndex])
-    if (!localStorage.getItem('lastRandomRestaurantDate')) {
-      localStorage.setItem('lastRandomRestaurantDate', new Date().getHours())
-    } 
+//   const randomIndex = (restaurants) => {
+//     console.log('in randomIndex')
+//     return Math.floor(Math.random() * restaurants.length)
+// }
+  const randomRestaurant = (restaurants) => {
+    console.log('restaurants in randomIndex:', restaurants)
+    const today = new Date().getHours()
+    setTodaysDay[Number(todaysDay)]
+    console.log('today:', typeof today)
+    console.log('todaysDay:', typeof Number(todaysDay))
+    if(todaysDay !== today || todaysPick) {
+      console.log('in conditional')
+      const randomIndex = Math.floor(Math.random() * restaurants.length)
+      setTodaysPick(restaurants[randomIndex])
+      if (!localStorage.getItem('lastRandomRestaurantDate')) {
+        localStorage.setItem('lastRandomRestaurantDate', new Date().getHours())
+      } 
+    }
   }
 
   const navigate = useNavigate()
@@ -30,20 +71,12 @@ const RestaurantIndex = ({ restaurants }) => {
     navigate(`/restaurantshow/${todaysPick?.id}`)
   }
 
-  const [todaysDay, setTodaysDay] = useState(localStorage.getItem('lastRandomRestaurantDate'))
-
   if (todaysPick === null) {
-    console.log('re5', restaurants)
     const randomIndex = Math.floor(Math.random() * restaurants.length)
     setTodaysPick(restaurants[randomIndex])
   }
 
-    useEffect(() => {
-      const today = new Date().getHours()
-      if(+todaysDay != today) {
-        randomRestaurant()
-      } 
-    }, [])
+  console.log('restaurants outside:', restaurants)
   
   return (
     <>

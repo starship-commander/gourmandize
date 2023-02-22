@@ -97,7 +97,7 @@ const App = (props) => {
         <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews} restaurants={restaurants} />} />
         <Route path='/reviewnew/:id' element={<ReviewNew currentUser={props.current_user} restaurants={restaurants} createReview={createReview} />} />
         <Route path='/reviewedit/:id' element={reviews.length > 0 && <ReviewEdit updateReview={updateReview} restaurants={restaurants} reviews={reviews} currentUser={props.current_user} />} />
-        {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} />} />}
+        {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} users={users} />} />}
         <Route path='/users' />
         <Route path='*' element={<NotFound />} />
       </Routes>

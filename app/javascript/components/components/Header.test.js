@@ -17,6 +17,21 @@ const renderShow = () => {
 
   it("renders without crashing", () => {
     renderShow()
-    screen.logTestingPlaygroundURL()
+  })
+
+  it("renders app name text in the header", () => {
+    renderShow()
+    expect(screen.getByText(/gourmandize/i)).toBeInTheDocument()
+  })
+  it("renders the menu button", () => {
+    renderShow()
+    expect(screen.getByRole('button', { name: /menu/i })).toBeInTheDocument()
+  })
+  it("renders restaurants link", () => {
+    renderShow()
+    expect(screen.getByRole('menuitem', {
+      name: /restaurants/i,
+      hidden: true
+    })).toBeInTheDocument()
   })
 })
