@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom"
 import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink, Button} from "reactstrap"
 import { NavLink } from "react-router-dom"
 
-const ReviewIndex = ({ reviews, currentUser }) => {
-
+const ReviewIndex = ({ reviews, currentUser, users }) => {
+  console.log('users:', users)
   const {id} = useParams()
 
   let timeUnit = "days"
@@ -41,9 +41,15 @@ const ReviewIndex = ({ reviews, currentUser }) => {
     )
   }
 
+  const getUsername = (userId) => {
+    for (const user of users) {
+      if (user.id === userId) return user.username
+    }
+  }
+
   return(
     <>
-      {(reviews && currentUser) && (
+      {reviews && (
       <CardContainer>
         <main style={{
           height:'100%', 
@@ -88,7 +94,7 @@ const ReviewIndex = ({ reviews, currentUser }) => {
               </CardBody>
               <ListGroup flush>
                 <ListGroupItem>
-                  user_id: {review.user_id}
+                  By: {getUsername(review.user_id)}
                 </ListGroupItem>
                 <ListGroupItem>
                   Posted {Number(displayedTime).toFixed()} {timeUnit} ago
@@ -104,7 +110,7 @@ const ReviewIndex = ({ reviews, currentUser }) => {
                       See More
                     </NavLink>
                   </button>
-                  {(review.user_id === currentUser.id) && 
+                  {(review.user_id === currentUser?.id) && 
                     <button className="button">
                       <NavLink className='menuLink' to={`/reviewedit/${review.id}`} style={{textDecoration:'none'}}>
                         Edit
