@@ -12,6 +12,12 @@ describe("<ReviewIndex />", () => {
     username: 'GangGang'
   }
 
+  const users = [{
+    id:1,
+    email: 'gangmember@gmail.com',
+    username: 'GangGang'
+  }]
+
   const review = [{
     meal: "Cheeseburger",
     content: "Cheeseburger was delicious, and biggg!",
@@ -23,14 +29,14 @@ describe("<ReviewIndex />", () => {
   it("renders without crashing", () => {
     render(
       <BrowserRouter>
-        <ReviewIndex reviews={review} currentUser={currentUser} />
+        <ReviewIndex reviews={review} currentUser={currentUser} users={users} />
       </BrowserRouter>
     )
   })
   it("has a card title", () => {
     render(
       <BrowserRouter>
-        <ReviewIndex reviews={review} currentUser={currentUser} />
+        <ReviewIndex reviews={review} currentUser={currentUser} users={users} />
       </BrowserRouter>
     )
     expect(screen.getByRole('heading', { name: /cheeseburger/i })).toBeInTheDocument()
@@ -38,7 +44,7 @@ describe("<ReviewIndex />", () => {
   it("has a rating title", () => {
     render(
       <BrowserRouter>
-        <ReviewIndex reviews={review} currentUser={currentUser} />
+        <ReviewIndex reviews={review} currentUser={currentUser} users={users} />
       </BrowserRouter>
     )
     expect(screen.getByText(/rating:★★★★★/i)).toBeInTheDocument()
@@ -46,7 +52,7 @@ describe("<ReviewIndex />", () => {
   it("has a rating title", () => {
     render(
       <BrowserRouter>
-        <ReviewIndex reviews={review} currentUser={currentUser} />
+        <ReviewIndex reviews={review} currentUser={currentUser} users={users} />
       </BrowserRouter>
     )
     expect(screen.getByText(/cheeseburger was delicious, and biggg!/i)).toBeInTheDocument()

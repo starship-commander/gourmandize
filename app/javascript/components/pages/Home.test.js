@@ -65,4 +65,26 @@ describe("<Home />", () => {
       name: /random/i
     })).toBeInTheDocument()
   })
+  it('has a browse restaurants section', () => {
+    render(
+      <BrowserRouter>
+        <Home restaurants={restaurants} />
+      </BrowserRouter>
+    )
+    expect(screen.getByText(/browse restaurants/i)).toBeInTheDocument()
+  })
+  it('calls a function on click event', () => {
+    render(
+      <BrowserRouter>
+        <Home restaurants={restaurants} />
+      </BrowserRouter>
+    )
+    const handleClick = jest.fn()
+    let button = screen.getByRole('button', {
+      name: /browse/i,
+      onClick: handleClick()
+    })
+    button.click()
+    expect(handleClick).toHaveBeenCalledTimes(1)
+  })
 })

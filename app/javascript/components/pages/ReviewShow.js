@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Card, CardBody, CardText, CardImg, CardTitle } from "reactstrap";
 import { NavLink } from "reactstrap";
 
-const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser}) => {
+const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser, users}) => {
   const { id } = useParams()
   const [isLoading, setIsLoading] = useState(true)
   const [currentReview, setCurrentReview] = useState(null)
@@ -53,7 +53,6 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser}) => {
   const deleteByID = () => {
     deleteReview(id)
     navigate(-1)
-
   }
 
   if(isLoading) {
@@ -106,23 +105,20 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser}) => {
                 </small>
               </CardText>
             </CardBody>
-              <div>
-            <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px'}} onClick={handleGoBack}>
-              Back
-            </button>
-            {(currentUser?.id === currentReview.user_id) && (
-            <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px', }} onClick={deleteByID}>                  
-              Delete
-            </button>
-
-            )}
+            <div>
+              <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px'}} onClick={handleGoBack}>
+                Back
+              </button>
+              {(currentUser?.id === currentReview.user_id) && (
+              <button className="button" style={{width:'90px', marginLeft:'5px', marginBottom:'5px', }} onClick={deleteByID}>                  
+                Delete
+              </button>)}
             </div>
-            
           </Card>
         </>
       )}
-      </main>
-    )
-  }
+    </main>
+  )
+}
   
-  export default ReviewShow
+export default ReviewShow

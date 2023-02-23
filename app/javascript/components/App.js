@@ -15,16 +15,15 @@ import ReviewNew from "./pages/ReviewNew"
 import ReviewShow from "./pages/ReviewShow"
 import MyPosts from "./pages/MyPosts"
 
-
-
-
 const App = (props) => {
   const [restaurants, setRestaurants] = useState([])
   const [reviews, setReviews] = useState([])
+  const [users, setUsers] = useState([])
   
   useEffect(() => {
     readRestaurants()
     readReviews()
+    readUsers()
   }, [])
 
   const readRestaurants = () => {
@@ -41,6 +40,16 @@ const App = (props) => {
       .then((response) => response.json())
       .then((payload) => {
         setReviews(payload)
+      })
+      .catch((error) => console.log(error))
+  }
+
+  const readUsers = () => {
+    fetch("/users/index")
+      .then((response) => response.json())
+      .then((payload) => {
+        setUsers(payload)
+        console.log(payload);
       })
       .catch((error) => console.log(error))
   }
@@ -71,6 +80,7 @@ const App = (props) => {
       .then(payload => readReviews())
       .catch(errors => console.log("updateReview errors: ", errors))
   }
+
   const deleteReview = (id) => {
     fetch(`/reviews/${id}`,{
       headers: {
@@ -85,21 +95,21 @@ const App = (props) => {
       .catch((error) => console.log(error))
   }
   
-
+  console.log(users);
   return(
     <BrowserRouter>
       <Header {...props} />
       <Routes>
         <Route path='/' element={<Home loggedIn={props.logged_in} currentUser={props.current_user} restaurants={restaurants} />} />
         <Route path='/restaurantindex' element={<RestaurantIndex restaurants={restaurants} />} />
-        <Route path='/restaurantshow/:id' element={<RestaurantShow restaurants={restaurants} reviews={reviews} loggedIn={props.logged_in} currentUser={props.current_user} />} />
+        <Route path='/restaurantshow/:id' element={<RestaurantShow restaurants={restaurants} reviews={reviews} loggedIn={props.logged_in} currentUser={props.current_user} users={users} />} />
         <Route path='/restaurantnew' element={<RestaurantNew />} />
         <Route path='/restaurantedit' element={<RestaurantEdit />} />
-        <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} currentUser={props.current_user} />} />
-        <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews} restaurants={restaurants} deleteReview={deleteReview} currentUser={props.current_user}/>} />
+        <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} currentUser={props.current_user} users={users} />} />
+        <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews} restaurants={restaurants} deleteReview={deleteReview} currentUser={props.current_user} users={users} />} />
         <Route path='/reviewnew/:id' element={<ReviewNew currentUser={props.current_user} restaurants={restaurants} createReview={createReview} />} />
-        <Route path='/reviewedit/:id' element={reviews.length > 0 && <ReviewEdit updateReview={updateReview} restaurants={restaurants} reviews={reviews} currentUser={props.current_user} />} />
-        {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} />} />}
+        <Route path='/reviewedit/:id' element={reviews.length > 0 && <ReviewEdit updateReview={updateReview} restaurants={restaurants} reviews={reviews} currentUser={props.current_user} users={users} />} />
+        {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} users={users} />} />}
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
