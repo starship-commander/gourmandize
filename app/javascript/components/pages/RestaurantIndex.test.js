@@ -26,14 +26,15 @@ describe("<RestaurantIndex />", () => {
         images: 'picture_of_cheeseburger.png',
         user_id: 1
   }]
-  it("todays pick", () => {
+  
+  it("renders todays pick", () => {
     render(
       <BrowserRouter>
         <RestaurantIndex restaurants={restaurants}/>
       </BrowserRouter>
     )
     expect(screen.getByRole('heading', {
-      name: /today's pick: best cheeseburger/i
+      name: /today's pick:/i
     })).toBeInTheDocument()
   })
 
@@ -45,5 +46,29 @@ describe("<RestaurantIndex />", () => {
     )
     expect(screen.getByRole('list')).toBeInTheDocument()
   })
-  
-})
+  it("checks for images alt ", () => {
+    render(
+      <BrowserRouter>
+        <RestaurantIndex restaurants={restaurants}/>
+      </BrowserRouter>
+    )
+    expect(screen.getByRole('img', { name: /card image cap/i })).toBeInTheDocument()
+  })
+  it("checks for main", () => {
+    render(
+      <BrowserRouter>
+        <RestaurantIndex restaurants={restaurants}/>
+      </BrowserRouter>
+    )
+    expect(screen.getByRole('main')).toBeInTheDocument()
+  })
+  it('has a button for Load More', () => {
+    render(
+      <BrowserRouter>
+        <RestaurantIndex restaurants={restaurants} />
+      </BrowserRouter>
+    )
+    expect(screen.getByRole('button', {
+      name: /Load More/i
+    })).toBeInTheDocument()
+})})

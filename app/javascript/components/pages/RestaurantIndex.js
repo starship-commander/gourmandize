@@ -2,9 +2,10 @@ import React, {useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, Button} from "reactstrap"
 import { NavLink } from "react-router-dom"
+import 'whatwg-fetch'
 
 
-const RestaurantIndex = ({  }) => {
+const RestaurantIndex = () => {
   const startIndex = 0
   const [endIndex, setEndIndex] = useState(4)
   const [todaysPick, setTodaysPick] = useState(null)
