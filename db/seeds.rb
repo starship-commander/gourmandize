@@ -20,7 +20,7 @@ end
     number_of_reviews: Faker::Number.within(range: 1..5000),
     price_range: Faker::Number.within(range: 1..4),
     menu_link: Faker::Internet.url,
-    images: Faker::Internet.url,
+    images: Faker::LoremFlickr.image(search_terms: ['food', 'restaurant', 'restaurants']),
     user_id: Faker::Number.within(range:1..10)
   )
 end
@@ -32,6 +32,6 @@ end
     rating: Faker::Number.within(range: 1..5),
     user_id: Faker::Number.within(range:1..10),
     restaurant_id: Faker::Number.within(range: 1..20),
-    image: Faker::Internet.url 
+    image: Faker::LoremFlickr.image(search_terms: ['food', 'restaurant'])
   )
 end

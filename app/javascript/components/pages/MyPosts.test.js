@@ -6,10 +6,31 @@ import { screen } from "@testing-library/react"
 
 
 describe("<MyPosts />", () => {
+
+    const user =  {
+        email: 'cheesy_boy@email.com',
+        password: 'cheese',
+        username: 'CheesyBoy',
+        id: 1
+    }
+    const users =  [{
+        email: 'cheesy_boy@email.com',
+        password: 'cheese',
+        username: 'CheesyBoy',
+        id: 1
+    }]
+    const review = [{
+        meal: 'cheeseburger',
+        content: 'The cheeseburger was delicious, and fresh!',
+        rating: 5,
+        user_id: 1,
+        restaurant_id: 1
+    }]
+
     it("renders without crashing", () => {
         render(
             <BrowserRouter>
-                <MyPosts />
+                <MyPosts currentUser={user} reviews={review} users={users} />
             </BrowserRouter>
         )
        
@@ -17,7 +38,7 @@ describe("<MyPosts />", () => {
     it("it has a heading", () => {
         render(
             <BrowserRouter>
-                <MyPosts />
+                <MyPosts currentUser={user} reviews={review} users={users} />
             </BrowserRouter>
         )
         expect(screen.getByRole('heading', {name: /my posts/i})).toBeInTheDocument()
@@ -26,7 +47,7 @@ describe("<MyPosts />", () => {
     it("renders review content", () => {
         render(
             <BrowserRouter>
-                <MyPosts currentUser={user} reviews={review}/>
+                <MyPosts currentUser={user} reviews={review} users={users} />
             </BrowserRouter>
         )
         expect(screen.getByText(/the cheeseburger was delicious, and fresh!/i)).toBeInTheDocument()
@@ -34,7 +55,7 @@ describe("<MyPosts />", () => {
     it("has a button for see more", () => {
         render(
             <BrowserRouter>
-                <MyPosts currentUser={user} reviews={review}/>
+                <MyPosts currentUser={user} reviews={review} users={users} />
             </BrowserRouter>
         )
         expect(screen.getByRole('button', {name: /see more/i})).toBeInTheDocument()
@@ -42,28 +63,11 @@ describe("<MyPosts />", () => {
     it("has a image", () => {
         render(
             <BrowserRouter>
-                <MyPosts currentUser={user} reviews={review}/>
+                <MyPosts currentUser={user} reviews={review} users={users} />
             </BrowserRouter>
         )
         expect(screen.getByRole('img', {name: /card/i})).toBeInTheDocument()
-    })
-    
-
-    const user =  {
-        email: 'cheesy_boy@email.com',
-        password: 'cheese',
-        username: 'CheesyBoy',
-        id: 1
-    }
-    const review = [{
-        meal: 'cheeseburger',
-        content: 'The cheeseburger was delicious, and fresh!',
-        rating: 5,
-        user_id: 1,
-        restaurant_id: 1
-    }]
-    
-    
+    })    
 })
 
 
