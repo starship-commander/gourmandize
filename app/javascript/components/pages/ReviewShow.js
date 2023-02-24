@@ -77,7 +77,7 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser, users}) =
               width="100%"
             />
             <CardBody>
-              <CardTitle tag="h5">
+              <CardTitle tag="h5" className="card-text">
                 {currentReview.meal}
               </CardTitle>
               <br />

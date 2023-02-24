@@ -15,8 +15,8 @@ const Footer = () => {
           height:'3vh',
           backgroundColor:'#2e2e2e'
         }}>
-          <div style={{color:'rgb(12, 243, 255)', position:'fixed', right:'2vw'}}>
-            &copy; Starship Commander | Ney | Octavio | Sammy | Chris
+          <div style={{color:'#bfbfbf', position:'fixed', right:'2vw'}}>
+            &copy; Starship Commander | <a className="footer-text" href="https://github.com/nvencer98" target="_blank">Ney</a> | <a className="footer-text" href="https://github.com/priceymineral" target="_blank">Octavio</a> | <a className="footer-text" href="https://github.com/SammyT13" target="_blank">Sammy</a> | <a href='https://github.com/chrisyhlee' className="footer-text" target="_blank">Chris</a>
           </div>
         </div>
       </>

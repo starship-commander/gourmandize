@@ -16,7 +16,14 @@
 @import "bootstrap";
 
 body {
-  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+  background: radial-gradient(circle at center, #1d3757 0%, #0c0d13 75%);
+  color:rgb(196, 196, 196);
+  height: 100vh;
+  width: 100vw;
+}
+
+.card-text {
+  color: black !important;
 }
 
 // HOMEPAGE
@@ -55,14 +62,15 @@ body {
 }
 
 .button:hover {
-  background-color: rgb(92, 92, 92);
+  background-color: rgb(120, 120, 120);
   color:rgb(253, 253, 253) !important;
 }
 
 .dropdown {
-  background-color: rgb(12, 243, 255);
-  color: #2e2e2e;
+  background-color: #757575;
+  color: #ffffff;
   border-radius: 10px;
+  border: 0.5px solid white;
   height: 4vh;
   font-size: 1.7vmin;
 }
@@ -75,6 +83,17 @@ body {
   display: flex;
   position: fixed !important;
   z-index: 999 !important;
+}
+
+.footer-text {
+  text-decoration: none;
+  color: #bfbfbf;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.footer-text:hover {
+  color: rgb(252, 252, 252)
 }
 
 .page-body {
@@ -125,7 +144,7 @@ body {
 .flicker {
   font-family: 'sunglasstype';
   font-weight: bold;
-  color: rgb(45, 108, 255);
+  color: rgb(191, 191, 191);
   background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#ffffff), color-stop(0.8, #ffffff)) no-repeat;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   background: gradient(linear, left top, right top, from(rgb(254, 254, 254)), to(rgb(255, 255, 255)), color-stop(0.8, #fff)) no-repeat;
@@ -145,7 +164,7 @@ body {
 }
 
 .flicker:hover {
-  color:rgb(12, 243, 255)
+  color:rgb(255, 255, 255)
 }
 
 
@@ -301,7 +320,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  transform: rotate(-45deg) scale(2);
+  transform: rotate(-45deg) scale(1);
   overflow: hidden;
   z-index: -1;
 }
@@ -398,4 +417,45 @@ body {
 .carousel-image {
   height: 100%;
   width: 100%
+}
+
+
+// Border
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --border-size: 3px;
+  --border-angle: 0turn;
+  width: 51vw;
+  height: 51vh;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      #213,
+      #112 50%,
+      #213
+    ),
+    conic-gradient(from var(--border-angle), transparent 20%, rgb(223, 223, 223), rgb(11, 0, 82));
+  background-size: calc(100% - (var(--border-size) * 2))
+      calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  animation: bg-spin 10s linear infinite;
+  @keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+
+  // &:hover {
+  //   animation-play-state: paused;
+  // }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
 }
