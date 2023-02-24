@@ -78,6 +78,7 @@ const RestaurantIndex = ({ restaurants }) => {
           {visibleRestaurants?.map((restaurant, index) => {
             return(
               <Card
+              className="gradient-border"
                 style={{
                   display:'inline-flex',
                   margin:'15px', 
@@ -141,6 +142,7 @@ const RestaurantIndex = ({ restaurants }) => {
             )
           })}
         </main>
+        <br />
         <br />
         <div style={{display:'flex', justifyContent:'flex-end', marginRight:'5vw', position:'relative', bottom:'4vh'}}>
           {(endIndex < restaurants.length) && (<button className="button" onClick={handleLoadMore}>Load More</button>)}

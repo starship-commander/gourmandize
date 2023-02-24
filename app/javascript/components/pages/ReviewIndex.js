@@ -62,6 +62,7 @@ const ReviewIndex = ({ reviews, currentUser, users }) => {
           postTime(review)
             return(
             <Card
+            className="gradient-border"
               key = {index}
               style={{
                 width: '16rem',

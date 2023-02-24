@@ -23,7 +23,9 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews, currentUser, users }) 
             display:'flex',
             gap:'30px'
           }}>
-            <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" style={{height: '50vh', minWidth:'25rem', marginLeft:'2.7vw'}}/>
+            <div style={{display:'flex', justifyContent:'center', height:'50vh', width:'40rem', marginLeft:'2rem'}}>
+              <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" style={{height: '50vh', minWidth:'25rem', marginLeft:'2.7vw'}}/>
+            </div>
             <div style={{
               height:'fit-content',
               width:'30vw',
