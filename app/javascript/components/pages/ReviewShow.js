@@ -9,41 +9,58 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser, users}) =
   const [currentReview, setCurrentReview] = useState(null)
   const [whichRestaurant, setWhichRestaurant] = useState(null)
 
-  let timeUnit = "days"
-  let displayedTime = 0
   
-
+  
   useEffect(() => {
     const review = reviews?.find(review => review.id === +id)
     setCurrentReview(review)
     setIsLoading(false)
   }, [id, reviews])
-
+  
   useEffect(() => {
     const restaurant = restaurants?.find(restaurant => restaurant.id === currentReview?.restaurant_id)
     setWhichRestaurant(restaurant)
   }, [currentReview, restaurants])
-
+  
   const navigate = useNavigate()
   const toRestaurant = () => {
     navigate(`/restaurantshow/${whichRestaurant.id}`)
   }
+
+  let timeUnit = "days"
+  let displayedTime = 0
 
   const postTime = (review) => {
     const startDate = Date.now()
     const datePosted = new Date(review.updated_at)
     const msElapsed = startDate - datePosted
     let daysElapsed = (msElapsed / 8.64e7).toFixed(2)
+    
     if (daysElapsed < 1) {
       const hoursElapsed = msElapsed / 3.6e6
       displayedTime = hoursElapsed
-      timeUnit = "hours"
-      if (hoursElapsed < 1) {
+      if (displayedTime < 1.5 && displayedTime >= 1) {
+        timeUnit = "hour"
+      } else {
+        timeUnit = "hours"
+      }
+      if (displayedTime < 1) {
         const minElapsed = msElapsed / 60000
         displayedTime = minElapsed
-        timeUnit = "minutes"
+        if (displayedTime >= .5 && displayedTime < 1.5) {
+          timeUnit = "minute"
+        } else {
+          timeUnit = "minutes"
+        }
       }
     }
+  }
+
+  const getUsername = (userId) => {
+    for (const user of users) {
+      if (user.id === userId) return user.username
+    }
+    console.log(currentReview)
   }
 
   const handleGoBack = () => {
@@ -80,23 +97,23 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser, users}) =
               <CardTitle tag="h5">
                 {currentReview.meal}
               </CardTitle>
+                <CardText>
+                  From: <span  className='restaurant-name' onClick={toRestaurant}>{whichRestaurant.name}</span>
+                </CardText>
               <br />
               <CardText>
                 {currentReview.content}
               </CardText>
-              <br />
               <CardText>
-                From: <span  className='restaurant-name' onClick={toRestaurant}>{whichRestaurant.name}</span>
+                Rating:
+                {(currentReview.rating >= 1 && currentReview.rating < 2) && ' ★☆☆☆☆'}
+                {(currentReview.rating >= 2 && currentReview.rating < 3) && ' ★★☆☆☆'}
+                {(currentReview.rating >= 3 && currentReview.rating < 4) && ' ★★★☆☆'}
+                {(currentReview.rating >= 4 && currentReview.rating < 5) && ' ★★★★☆'}
+                {currentReview.rating === 5 && ' ★★★★★'}
               </CardText>
-              <br />
               <CardText>
-                My Rating:
-                <br />
-                {(currentReview.rating >= 1 && currentReview.rating < 2) && '★☆☆☆☆'}
-                {(currentReview.rating >= 2 && currentReview.rating < 3) && '★★☆☆☆'}
-                {(currentReview.rating >= 3 && currentReview.rating < 4) && '★★★☆☆'}
-                {(currentReview.rating >= 4 && currentReview.rating < 5) && '★★★★☆'}
-                {currentReview.rating === 5 && '★★★★★'}
+                By: <span>{getUsername(currentReview.user_id)}</span>
               </CardText>
               <br />
               <CardText>
