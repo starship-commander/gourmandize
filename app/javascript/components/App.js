@@ -49,13 +49,11 @@ const App = (props) => {
       .then((response) => response.json())
       .then((payload) => {
         setUsers(payload)
-        console.log(payload);
       })
       .catch((error) => console.log(error))
   }
 
   const createReview = (reviewObj) => {
-    console.log(reviewObj)
     fetch("/reviews", {
       body: JSON.stringify(reviewObj),
       headers: {
@@ -94,8 +92,7 @@ const App = (props) => {
       })
       .catch((error) => console.log(error))
   }
-  
-  console.log(users);
+
   return(
     <BrowserRouter>
       <Header {...props} />

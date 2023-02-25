@@ -20,10 +20,10 @@ const Navigation = ({
           <DropdownMenu className="drop-options">
             {logged_in && (
               <DropdownItem href="/restaurantindex">Restaurants</DropdownItem>
-              )}
+            )}
             {!logged_in && (
               <DropdownItem href="/restaurantindex">Restaurants</DropdownItem>
-              )}
+            )}
             {logged_in && (
               <DropdownItem href="/myposts">My Posts</DropdownItem>
             )}
