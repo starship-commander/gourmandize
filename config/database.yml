@@ -81,6 +81,5 @@ test:
 #
 production:
   <<: *default
-  database: gourmandize_production
-  username: gourmandize
-  password: <%= ENV["GOURMANDIZE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
