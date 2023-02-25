@@ -442,16 +442,12 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
 
-  animation: bg-spin 10s linear infinite;
+  animation: bg-spin 3s linear infinite;
   @keyframes bg-spin {
     to {
       --border-angle: 1turn;
     }
   }
-
-  // &:hover {
-  //   animation-play-state: paused;
-  // }
 }
 
 @property --border-angle {
@@ -488,14 +484,15 @@ body {
     background: linear-gradient(
       60deg,
       hsl(0, 0%, 87%),
+      hsl(0, 0%, 25%),
+      hsl(245, 100%, 50%),
+      hsl(249, 100%, 50%),
       hsl(0, 0%, 87%),
-      hsl(186, 100%, 50%),
-      hsl(186, 100%, 50%),
+      hsl(0, 0%, 25%),
+      hsl(249, 100%, 50%),
+      hsl(249, 100%, 50%),
       hsl(0, 0%, 87%),
-      hsl(0, 0%, 87%),
-      hsl(186, 100%, 50%),
-      hsl(186, 100%, 50%),
-      hsl(0, 0%, 87%),
+      hsl(0, 0%, 25%)
     );
     background-size: 300% 300%;
     background-position: 0 50%;
