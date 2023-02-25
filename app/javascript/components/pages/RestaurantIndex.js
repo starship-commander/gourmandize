@@ -57,7 +57,7 @@ const RestaurantIndex = ({ restaurants }) => {
             />
             <CardBody>
               <CardTitle tag="h5">
-                Today's pick:{' '}
+                <span className="card-text">Today's pick:{' '}</span>
                 {todaysPick && (
                   <span onClick={toRestaurant} className="restaurant-name">
                     {todaysPick.name}
@@ -78,11 +78,13 @@ const RestaurantIndex = ({ restaurants }) => {
           {visibleRestaurants?.map((restaurant, index) => {
             return(
               <Card
+              className="gradient-border"
                 style={{
                   display:'inline-flex',
                   margin:'15px', 
                   width:'16rem',
-                  height:'520px'
+                  height:'520px',
+                  justifyContent:'space-around'
                 }}
                 key = {index}
               >
@@ -97,7 +99,7 @@ const RestaurantIndex = ({ restaurants }) => {
                   />
                 </div>
                 <CardBody style={{height:'5%'}}>
-                  <CardTitle tag="h5">
+                  <CardTitle tag="h5" className="card-text">
                     {restaurant.name}
                   </CardTitle>
                   <CardText style={{height:'3rem'}}>
@@ -140,7 +142,9 @@ const RestaurantIndex = ({ restaurants }) => {
             )
           })}
         </main>
-        <div style={{marginBottom:'5vh', display:'flex', justifyContent:'flex-end', marginRight:'5vw'}}>
+        <br />
+        <br />
+        <div style={{display:'flex', justifyContent:'flex-end', marginRight:'5vw', position:'relative', bottom:'4vh'}}>
           {(endIndex < restaurants.length) && (<button className="button" onClick={handleLoadMore}>Load More</button>)}
         </div>
       </>

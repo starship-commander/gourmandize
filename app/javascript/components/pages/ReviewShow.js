@@ -83,7 +83,7 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser, users}) =
           {postTime(currentReview)}
           <h3 className="page-body">Gourmandizer says:</h3>
           <br />
-          <Card className="my-2" style={{height:'75vh', margin:'3vh'}}>
+          <Card className="my-2 gradient-border" style={{height:'75vh', margin:'10vw'}}>
             <CardImg
               alt="Card image cap"
               src={currentReview.image}
@@ -94,7 +94,7 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser, users}) =
               width="100%"
             />
             <CardBody>
-              <CardTitle tag="h5">
+              <CardTitle tag="h5" className="card-text">
                 {currentReview.meal}
               </CardTitle>
                 <CardText>

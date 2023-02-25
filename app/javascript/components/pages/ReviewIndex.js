@@ -62,6 +62,7 @@ const ReviewIndex = ({ reviews, currentUser, users }) => {
           postTime(review)
             return(
             <Card
+            className="gradient-border"
               key = {index}
               style={{
                 width: '16rem',
@@ -76,7 +77,7 @@ const ReviewIndex = ({ reviews, currentUser, users }) => {
                 style={{height:'40%'}}
               />
               <CardBody>
-                <CardTitle tag="h5" style={{height:'2.5rem'}}>
+                <CardTitle tag="h5" style={{height:'2.5rem'}} className="card-text" >
                   {review.meal}
                 </CardTitle>
                 <CardText style={{height:'1rem'}}>
