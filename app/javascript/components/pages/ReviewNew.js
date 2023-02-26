@@ -30,13 +30,13 @@ const ReviewNew = ({ currentUser, restaurants, createReview }) => {
   }
 
   return(
-    <main>
+    <main style={{display:'flex', justifyContent:'center'}}>
       {restaurants && (
       <>
         <Form style={{margin:'20px', marginTop:'6vh'}}>
           <FormGroup>
-            <Label for="exampleEmail">
-              Review for
+            <Label for="exampleEmail" style={{color:'rgb(1, 234, 255)', fontWeight:'bold', fontSize:'large'}}>
+              Review for {currentRestaurant?.name}
             </Label>
           </FormGroup>
           <FormGroup>
@@ -50,6 +50,7 @@ const ReviewNew = ({ currentUser, restaurants, createReview }) => {
               type="text"
               onChange={handleChange}
               value={newReview.meal}
+              className='input-field'
             />
           </FormGroup>
           <FormGroup>
@@ -62,6 +63,7 @@ const ReviewNew = ({ currentUser, restaurants, createReview }) => {
                 type="select"
                 onChange={handleChange}
                 value={newReview.rating}
+                className='input-field'
               >
                 <option value="" disabled>
                   Select a rating
@@ -93,6 +95,7 @@ const ReviewNew = ({ currentUser, restaurants, createReview }) => {
               placeholder="image URL here"
               type="text"
               onChange={handleChange}
+              className='input-field'
             />
           </FormGroup>
           <FormGroup>
@@ -105,6 +108,7 @@ const ReviewNew = ({ currentUser, restaurants, createReview }) => {
               type="textarea"
               onChange={handleChange}
               value={newReview.content}
+              className='input-field'
             />
           </FormGroup>
           <button className="button" onClick={handleSubmit}>

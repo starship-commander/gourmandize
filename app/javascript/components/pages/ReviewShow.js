@@ -77,22 +77,25 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser, users}) =
   }
 
   return(
-    <main>
+    <main style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
       {(currentReview && whichRestaurant) && (
         <>
           {postTime(currentReview)}
           <h3 className="page-body">Gourmandizer says:</h3>
           <br />
-          <Card className="my-2 gradient-border" style={{height:'75vh', margin:'10vw'}}>
-            <CardImg
-              alt="Card image cap"
-              src={currentReview.image}
-              style={{
-                height:'45%'
-              }}
-              top
-              width="100%"
-            />
+          <Card className="my-2 gradient-border show-card" style={{height:'fit-content', margin:'12%'}}>
+            <div style={{height:'400px', }}>
+              <CardImg
+                alt="Card image cap"
+                src={currentReview.image}
+                style={{
+                  height:'100%',
+                  width:'100%'
+                }}
+                top
+                width="100%"
+              />
+            </div>
             <CardBody>
               <CardTitle tag="h5" className="card-text">
                 {currentReview.meal}

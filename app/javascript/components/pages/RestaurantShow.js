@@ -18,18 +18,19 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews, currentUser, users }) 
     <main>
       {currentRestaurant && (
         <>
-          <h1 className='page-body' style={{marginLeft:'2.7vw'}}>{currentRestaurant.name}</h1>
+          <h1 className='page-body' style={{marginLeft:'2.7vw', marginTop:'7vh', marginBottom:'-1rem'}}>{currentRestaurant.name}</h1>
           <div style={{
             display:'flex',
-            gap:'30px'
+            flexWrap:'wrap',
+            marginLeft:'5vw'
           }}>
-            <div style={{display:'flex', justifyContent:'center', height:'50vh', width:'40rem', marginLeft:'2rem'}}>
-              <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" style={{height: '50vh', minWidth:'25rem', marginLeft:'2.7vw'}}/>
+            <div className='res-show'>
+              <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" style={{height: '100%', width:'100%', objectFit:'cover'}}/>
             </div>
             <div style={{
               height:'fit-content',
-              width:'30vw',
-              marginTop:'10%'
+              marginTop:'5%',
+              marginLeft:'5%'
             }}>
               Cuisine: {currentRestaurant.cuisine} <br />
               Address: {currentRestaurant.street}, {currentRestaurant.state} {currentRestaurant.zip_code} <br />
