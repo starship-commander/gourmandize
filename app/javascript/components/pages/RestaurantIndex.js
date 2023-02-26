@@ -45,36 +45,57 @@ const RestaurantIndex = ({ restaurants }) => {
     return(
       <>
         <main className="page-body">
-          <Card className="my-2" style={{margin:'1rem', height:'500px'}}>
-            <CardImg
-              alt="Card image cap"
-              src="https://picsum.photos/900/180"
-              style={{
-                height:'350px'
-              }}
-              top
-              width="100%"
-            />
-            <CardBody>
-              <CardTitle tag="h5">
-                <span className="card-text">Today's pick:{' '}</span>
-                {todaysPick && (
-                  <span onClick={toRestaurant} className="restaurant-name">
-                    {todaysPick.name}
-                  </span>
-                )}
-              </CardTitle>
-              <CardText>
-                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-              </CardText>
-              <CardText>
-                <small className="text-muted">
-                  Last updated 3 mins ago
-                </small>
-              </CardText>
-            </CardBody>
-          </Card>
+          <h3 style={{marginLeft:'10vw'}}>Our Restaurants</h3>
+          <div style={{display:'flex', justifyContent:'center'}}>
+            <Card className="my-2 res-index-card gradient-border" style={{margin:'1rem', height:'fit-content'}}>
+              <CardImg
+                alt="Card image cap"
+                src="https://picsum.photos/900/180"
+                style={{
+                  height:'200px'
+                }}
+                top
+                width="100%"
+              />
+              <CardBody>
+                <CardTitle tag="h5">
+                  <span className="card-text">Today's pick:{' '}</span>
+                  {todaysPick && (
+                    <span onClick={toRestaurant} className="restaurant-name">
+                      {todaysPick.name}
+                    </span>
+                  )}
+                </CardTitle>
+                <CardText>
+                  Cuisine:
+                  {` ${todaysPick?.cuisine}`}
+                </CardText>
+                <CardText>
+                  Average Rating: 
+                  {(todaysPick?.avg_rating >= 1 && todaysPick?.avg_rating < 2) && ' ★☆☆☆☆'}
+                  {(todaysPick?.avg_rating >= 2 && todaysPick?.avg_rating < 3) && ' ★★☆☆☆'}
+                  {(todaysPick?.avg_rating >= 3 && todaysPick?.avg_rating < 4) && ' ★★★☆☆'}
+                  {(todaysPick?.avg_rating >= 4 && todaysPick?.avg_rating < 5) && ' ★★★★☆'}
+                  {todaysPick?.avg_rating === 5 && ' ★★★★★'}
+                </CardText>
+                <CardText>
+                  Price: 
+                  {todaysPick?.price_range === 1 && ' $'}
+                  {todaysPick?.price_range === 2 && ' $$'}
+                  {todaysPick?.price_range === 3 && ' $$$'}
+                  {todaysPick?.price_range === 4 && ' $$$$'}
+                </CardText>
+                <CardText>
+                  <small className="text-muted">
+                    Last updated 3 mins ago
+                  </small>
+                </CardText>
+              </CardBody>
+            </Card>
+          </div>
 
+          <h3 style={{marginLeft:'10vw'}}>See the rest:</h3>
+          <div style={{display:'flex', justifyContent:'center', flexWrap:'wrap'}}>
           {visibleRestaurants?.map((restaurant, index) => {
             return(
               <Card
@@ -83,7 +104,7 @@ const RestaurantIndex = ({ restaurants }) => {
                   display:'inline-flex',
                   margin:'15px', 
                   width:'16rem',
-                  height:'520px',
+                  height:'fit-content',
                   justifyContent:'space-around'
                 }}
                 key = {index}
@@ -102,9 +123,9 @@ const RestaurantIndex = ({ restaurants }) => {
                   <CardTitle tag="h5" className="card-text">
                     {restaurant.name}
                   </CardTitle>
-                  <CardText style={{height:'3rem'}}>
+                  {/* <CardText style={{height:'3rem'}}>
                     Hello
-                  </CardText>
+                  </CardText> */}
                 </CardBody>
                 <ListGroup flush>
                   <ListGroupItem>
@@ -141,6 +162,7 @@ const RestaurantIndex = ({ restaurants }) => {
               </Card>
             )
           })}
+        </div>
         </main>
         <br />
         <br />

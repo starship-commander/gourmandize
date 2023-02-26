@@ -66,7 +66,6 @@ const ReviewIndex = ({ reviews, currentUser, users }) => {
               key = {index}
               style={{
                 width: '16rem',
-                minWidth: '20vw',
                 margin: '2%',
                 height: '520px'
               }}

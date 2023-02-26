@@ -7,8 +7,10 @@ const MyPost = ({ reviews, currentUser, users }) => {
   
   return(
     <>
-      <h1 className="page-body">My Reviews</h1>
-      < ReviewIndex reviews={filteredReviews} currentUser={currentUser} users={users} />
+      <div className="page-body" style={{textAlign:'center'}}>
+        <h1 >My Posts</h1>
+      </div>
+        < ReviewIndex reviews={filteredReviews} currentUser={currentUser} users={users} />
       <FallingStars />
     </>
   )

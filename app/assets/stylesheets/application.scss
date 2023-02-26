@@ -22,6 +22,23 @@ body {
   width: 100vw;
 }
 
+.login_page {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  gap: 3px;
+}
+
+.devise_links {
+  display: flex;
+  gap: 15px;
+  // translate: 35%;
+  margin-top: 30px
+}
+
 .card-text {
   color: black !important;
 }
@@ -99,6 +116,46 @@ body {
   min-width: 700px;
 }
 
+.res-show {
+  display: flex;
+  justify-content: center;
+  height: 22rem;
+  max-width: 800px;
+  margin-left: 4vw;
+  margin-top: 4vh;
+  box-shadow: rgb(203, 214, 255) -5px 5px 15px 5px;
+  transition: width 0.5s linear
+}
+
+@media screen and (max-width: 1035px) {
+  .res-show {
+    width: 85%;
+    transition: width 0.5s linear;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .show-card {
+    width: 45rem
+  }
+}
+
+@media screen and (min-width: 863px) {
+  .res-index-card {
+    width: 52rem
+  }
+}
+
+.input-field {
+  width: 40rem !important
+}
+
+@media screen and (max-width: 720px) {
+  .input-field {
+    width: 85vw !important
+  }
+}
+
 .menuLink {
   text-decoration: none;
   color: black !important;
@@ -111,11 +168,11 @@ body {
 }
 
 .card-body {
-  height: 250px !important;
+  height: fit-content !important;
 }
 
 .restaurant-name {
-  color: rgb(7, 114, 255);
+  color: rgb(1, 111, 255);
   cursor: pointer;
   transition: 0.1s ease-in-out;
 }
@@ -292,9 +349,6 @@ body {
 
 .home-body {
   body {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     min-height: 100vh;
      background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
     overflow: hidden;
@@ -339,11 +393,6 @@ body {
   filter: drop-shadow(0 0 6px currentColor);
   transform: translate3d(104em, 0, 0);
   animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
-
-  // @include sp-layout {
-  //   // For mobile performance, tail-fade animation will be removed QAQ
-  //   animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
-  // }
 
   @for $i from 1 through $star-count {
     &:nth-child(#{$i}) {
@@ -404,12 +453,17 @@ body {
   }
 }
 .carousel-item {
-  height: 50vh;
-  width: 50vw;
+  height: 100%;
+  width: 100%;
 }
 .carousel-image {
   height: 100%;
   width: 100%
+}
+.carousel-inner {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 
@@ -420,8 +474,8 @@ body {
   align-items: center;
   --border-size: 3px;
   --border-angle: 0turn;
-  width: 51vw;
-  height: 51vh;
+  max-width: 500px;
+  height: 33vh;
   background-image: conic-gradient(
       from var(--border-angle),
       #213,
@@ -453,19 +507,6 @@ body {
 .gradient-border {
   --border-width: 4px;
 
-  // position: relative;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // width: 300px;
-  // height: 200px;
-  // font-family: Lato, sans-serif;
-  // font-size: 2.5rem;
-  // text-transform: uppercase;
-  // color: white;
-  // background: #222;
-  // border-radius: var(--border-width);
-
   &::after {
     position: absolute;
     content: "";
@@ -477,14 +518,16 @@ body {
     background: linear-gradient(
       60deg,
       hsl(0, 0%, 87%),
-      hsl(0, 0%, 25%),
-      hsl(245, 100%, 50%),
-      hsl(249, 100%, 50%),
       hsl(0, 0%, 87%),
       hsl(0, 0%, 25%),
-      hsl(249, 100%, 50%),
-      hsl(249, 100%, 50%),
+      hsl(0, 0%, 25%),
       hsl(0, 0%, 87%),
+      hsl(0, 0%, 87%),
+      hsl(0, 0%, 25%),
+      hsl(0, 0%, 25%),
+      hsl(0, 0%, 87%),
+      hsl(0, 0%, 87%),
+      hsl(0, 0%, 25%),
       hsl(0, 0%, 25%)
     );
     background-size: 300% 300%;
@@ -498,4 +541,80 @@ body {
   50% {
     background-position: 100% 50%;
   }
+}
+
+// Spell Out
+.header-container {
+  opacity: 0;
+  animation: fade-in-container 2s ease-in-out forwards;
+}
+
+.spelling-out {
+  display: inline-block;
+}
+
+.spelling-out span {
+  display: inline-block;
+  opacity: 0;
+  animation: spelling-out 2s ease-in-out forwards;
+}
+
+.spelling-out:nth-of-type(1) span {
+  animation-delay: 1s;
+}
+
+.spelling-out:nth-of-type(2) span {
+  animation-delay: 2s;
+}
+
+.spelling-out-2 span {
+  display: inline-block;
+  opacity: 0;
+  animation: spelling-out 2s ease-in-out forwards;
+}
+
+.spelling-out-2:nth-of-type(1) span {
+  animation-delay: 3s;
+}
+
+@keyframes spelling-out {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// Fade In
+.fade-container {
+  opacity: 0;
+  animation: fade-in-container 1s ease-in-out forwards;
+}
+
+@keyframes fade-in-container {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 1s ease-in-out forwards;
+}
+
+.fade-in:nth-of-type(1) {
+  animation-delay: 4s;
+}
+
+.fade-in:nth-of-type(2) {
+  animation-delay: 4.5s;
+}
+
+.fade-in:nth-of-type(3) {
+  animation-delay: 5s;
+}
+
+.fade-in:nth-of-type(4) {
+  animation-delay: 5.5s;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
 }
