@@ -1,91 +1,217 @@
-# README
+# Gourmandize
 
-# gourmandize
+## Table of Contents
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Walk-Through/Video](#walk-throughvideo)
+4. [Tech Stack](#tech-Stack)
+5. [Setting Up Application Locally](#setting-up-application-locally)
+6. [Starting From Scratch](#starting-from-scratch)
+7. [Additional Resources](#additional-resources)
+8. [Schema](#schema)
 
-## Capstone Project Details
+## Overview
 
-**Planning is critical to the success of your project.** Proper planning can help avoid wasting time and ensure your team is successful.
+This web application was created for the food enthusiast inside us all, replacing the customer experience with the food experience.  Users can access restaurants and their respective reviews, where only the food gets judged.
 
-### Prep To Do List
-- [x] Create a team name
-- [x] Create a slack channel within the LEARN workspace
-  - [x] Add the instructors
-- [x] Create a team email address
-- [x] Create a team GitHub Organization
-  - [x] Add all team members, instructors, and mentors in the role of "owner"
-  - [x] Add an image to your organization
-  - [x] Add Slack integrations for your repository `/github subscribe <repo-url>`
-- [x] Create a team Trello Board
-  - [x] Add the instructors
-- [x] Decide on Developer Roles
-  - **Product Manager:** Sammy
-  - **Project Manager:** Ney
-  - **Tech Lead:** Octavio
-  - **Design Lead:** Chris
+**LIVE LINK:** [Gourmandize](https://gourmandize-e0kd.onrender.com)
 
-### Green Light Meeting
-- [x] Elevator pitch - 30 sec summary of the app
-- [x] Wireframes - visual representations of all the pages your user will see for your MVP
-- [x] DB schema drawn out with column names, data types, and table relationships
-- [x] CRUD actions
-- [x] User stories for your MVP on Trello
+## Features
 
-### Trello Board
-- Swim lanes
-  - [x] Icebox
-  - [x] MVP
-  - [x] Doing
-  - [x] Code review
-  - [x] Done
+  - Users can browse a list of restaurants or select a random restaurant.
+  - Users can view more details about a restaurant.
+  - Each restaurant will have a list of reviews left by our gourmandizers.
+  - Users will have access to the restaurant menu, if available.
+  - Upon signing up or signing in, users can write reviews.
+  - Logged-in users can view a list of restaurants on which they have left a review.
+  - Logged-in users can also edit or delete their reviews.
+  - Logged-in users can add new restaurants to our application.
+  - Logged-in users can also edit their restaurant.
 
-### Team Name
-**Starship Commander**
+## Tech Stack
 
-### Elevator Pitch
-The elevator pitch should succinctly explain your project's purpose and functionality.
+  - React in Rails (React as a View Component of the Rails MVC framework)
+  - Javascript
+  - Ruby
+  - CSS/SCSS
+  - PostgreSQL
+  - Packages/Dependencies:
+    - webpacker
+    - bootstrap
+    - reactstrap
+    - rspec-rails
+    - react-rails
+    - @babel/preset-react
+    - @rails/activestorage
+    - @rails/ujs
+    - devise
+    - faker
+  - Render (Web Deployment)
 
-### Wireframes
-Wireframes are drawings or basic outlines of what each page of your application will look to the user. Wireframes should be vague enough that style choices are not limited, but provide enough information to create an MVP. During development, if there are any questions or disagreements on the look or basic functionality of your app, wireframes can help sort out those issues. A good wireframe will allow the development team to "walk through" the application page by page.
+## Setting Up Application Locally
 
-### DB Schema
-Setting up your database will be one of the first steps in your project. The database schema should be drawn out with the name of each column and the data type of each column. Relationships between each table should be defined.
+```bash
+  # Clone repository
+  $ git clone https://github.com/starship-commander/gourmandize.git
 
-### User Stories
-A user story describes how a user interacts with an app. Stories take your wireframes and DB schema and turn them into actionable items. Stories are a detailed "to do" list for every part of your application. Stories keep the team focused on the overall goal of the application as well as keeping the individual developers on task. There should be a clear understanding of when a story is "done".
+  # Finish Setup: In the root project directory (installs dependencies and set-up database)
+  $ bundle
+  $ yarn
+  $ rails db:setup 
 
-### Schedules
-The capstone project is two weeks long and can be divided into two one-week (5 day) sprints. The first sprint is getting the basic functionality of your application, or your **Minimum Viable Product**. The second sprint is for adding additional styling and **Icebox** functionality.
-
-A typical day:
-```
-9:15 - Morning standup with the class
-- Project: What tasks did you complete yesterday? What task are you working on today?
-- Tech: What are your blockers? What is your plan for your mentorship session today?
-
-9:30 - Check in with your group and discuss the plan for the day
-- What story is each person working on?
-- What is the goal for the day?
-- What story / branch are you currently working on?
-
-4:15 - Wrap up with your group
-- Reflect on the progress you made throughout the day
-- Move any cards completed and discuss the next steps
-- Surface any blockers
-- Discuss actions items for tomorrow
-
-4:30 - Afternoon standup with the class
-- Product: What did your team do today that got your application closer to the requirements of the project?
-- Design: What did your team do today that increased your user's experience?
-
-4:45 - Check out with the class
+  # Start the App (run the server)
+  $ rails s  
 ```
 
-### Initial Setup
+## Starting From Scratch
+- Terminal Command:
+```bash
+    $ rails new <app-name> -d postgresql -T
+    $ cd <app-name>
+    $ rails db:create
+    $ bundle add rspec-rails
+    $ rails generate rspec:install
+    $ bundle add webpacker
+    $ bundle add react-rails
+    $ rails webpacker:install
+    $ rails webpacker:install:react
+    $ yarn add @babel/preset-react
+    $ yarn add @rails/activestorage
+    $ yarn add @rails/ujs
+    $ rails generate react:install
+    $ rails generate react:component App
+    $ bundle add devise
+    $ rails generate devise:install
+    $ rails generate devise User
+    $ rails db:migrate
+    $ rails generate controller Home index
 
-## Resource for devise username
+    # Additional Configuration
+    $ rails generate resource ModelName attribute:datatype attribute:datatype...
+    $ rails db:migrate
+```
 
-https://github.com/heartcombo/devise/wiki/How-To%3A-Allow-users-to-sign-in-using-their-username-or-email-address
+### Devise Configuration
+- Path To File: config/environments/development.rb
+    - Add Code: 
+    ```ruby
+        config.action_mailer.default_url_options = { host: 'localhost', prot: 3000 }
+    ```
+- Path To File: config/initializers/devise.rb
+    - Add Code:
+    ```ruby
+        # Find this line:
+        config.sign_out_via = :delete
+        # Replace it with this line:
+        config.sign_out_via = :get
+    ```
+- Path To File: app/views/home/index.html.erb
+    - Add Code:
+    ```erb
+        <%= react_component 'App', {
+        logged_in: user_signed_in?,
+        current_user: current_user,
+        new_user_route: new_user_registration_path,
+        sign_in_route: new_user_session_path,
+        sign_out_route: destroy_user_session_path
+        } %>
+    ```
 
-## Resource for Faker
+### React in Rails Configuration
+- Path To File: app/views/layouts/application.html.erb
+    - Add Code:
+    ```erb
+        # Find this line:
+        <%= javascript_importmap_tags %>
+        # Replace it with this line:
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    ```
+- Path To File: config/routes.rb
+    - Add Code:
+    ```ruby
+        # These lines added:
+        get '*path', to: 'home#index', constraints: ->(request){ request.format.html? }
+        root 'home#index'
+    ```
 
-https://github.com/faker-ruby/faker
+### React Routing Configuration
+- Terminal Command:
+```bash
+    $ yarn add react-router-dom
+```
+- Path To File: app/javascript/components/App.js
+    - Add Code:
+    ```javascript
+        import { BrowserRouter, Routes, Route } from "react-router-dom"
+    ```
+
+### Reactstrap Configuration
+- Terminal Command:
+```bash
+    $ bundle add bootstrap
+    $ mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
+    $ yarn add reactstrap
+```
+- Path To File: app/assets/stylesheets/application.scss
+    - Add Code:
+    ```scss
+        @import "bootstrap";
+    ```
+### Testing
+- Terminal Command:
+```bash
+    $ yarn test
+    $ rspec spec
+```
+
+## Additional Resources
+  1. [React-Rails Project Docs](https://github.com/reactjs/react-rails)
+  2. [Reactstrap](https://reactstrap.github.io/?path=/story/home-installation--page)
+  3. [Sass Documentation](https://sass-lang.com/documentation/syntax)
+  4. [Devise GitHub Repo](https://github.com/heartcombo/devise#getting-started)
+  4. [Faker-Ruby](https://github.com/faker-ruby/faker)
+
+## Schema
+
+### Restaurant Model:
+- belongs to user, has many reviews
+
+| **Property** | **Data-Type** |
+| ------------ | ------------- |
+| ID (PK)      | Integer       |
+| name         | String        |
+| cuisine      | String        |
+| street       | String        |
+| city         | String        |
+| state        | String        |
+| zip_code     | Integer       |
+| avg_rating   | Float         |
+| number_of_reviews | Integer  |
+| price_range  | Integer       |
+| menu_link    | Text          |
+| images       | String        |
+| user_id (FK) | Integer       |
+
+### Review Model:
+- belongs to restaurant and user
+
+| **Property** | **Data-Type** |
+| ------------ | ------------- |
+| ID (PK)      | Integer       |
+| meal         | String        |
+| content      | Text          |
+| image        | Text          |
+| rating       | Integer       |
+| user_id (FK) | Integer       |
+| restaurant_id (FK) | Integer       |
+
+### User Model:
+- has many restaurants and reviews
+
+| **Property** | **Data-Type** |
+| ------------ | ------------- |
+| ID (PK)      | Integer       |
+| email        | String        |
+| password     | String        |
+| username     | String        |
+
