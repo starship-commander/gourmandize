@@ -78,3 +78,5 @@ gem "bootstrap", "~> 5.2"
 gem "faker"
 
 gem "dotenv-rails"
+
+gem "curb"
