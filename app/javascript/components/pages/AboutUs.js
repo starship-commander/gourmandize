@@ -51,7 +51,7 @@ const AboutUs = () => {
         </div>
         <br />
 
-        <div style={{display:'flex', gap:'20px', justifyContent:'center'}}>
+        <div style={{display:'flex', gap:'20px', justifyContent:'center', alignItems:'center'}}>
           <div 
             style={{
               height:'275px',
@@ -66,7 +66,7 @@ const AboutUs = () => {
 
           </div>
           <div style={{width: '600px'}}>
-            This is some text to test out what it looks like.
+          Hello, my name is Octavio (pronounced oak-tah-vee-o)! As the technical lead in this project, I monitored technical operations and made sure they ran smoothly. I also lead mentorship sessions for the team as well as surfaced and helped tackle blockers to aid in setting goals for the day.
           </div>
         </div>
         <br />
