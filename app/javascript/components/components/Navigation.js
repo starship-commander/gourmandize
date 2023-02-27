@@ -19,6 +19,12 @@ const Navigation = ({
           </DropdownToggle>
           <DropdownMenu className="drop-options">
             {logged_in && (
+              <DropdownItem href='/about'>About Us</DropdownItem>
+            )}
+            {!logged_in && (
+              <DropdownItem href='/about'>About Us</DropdownItem>
+            )}
+            {logged_in && (
               <DropdownItem href="/restaurantindex">Restaurants</DropdownItem>
             )}
             {!logged_in && (
