@@ -19,42 +19,11 @@ const App = (props) => {
   const [restaurants, setRestaurants] = useState([])
   const [reviews, setReviews] = useState([])
   const [users, setUsers] = useState([])
-
-
-  // const yelpKey = process.env.REACT_APP_API_KEY
-
-  // const yelpAPI = () => {
-  //   fetch('https://api.yelp.com/v3/businesses/3', {
-  //     header: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${yelpKey}`
-  //     },
-  //     mode: 'no-cors'
-  //   })
-  //     .then((response) => console.log(response))
-  //     .then ((payload) => {
-  //       console.log(payload)
-  //     })
-  //     .catch((error) => console.log('errors :', error))
-  // }
-  // const options = {
-  //   method: 'GET', 
-  //   headers: {
-  //     "Content-Type": 'application/json', 
-  //     "Access-Control-Allow-Origin":"*", 
-  //     Authorization: `Bearer ${yelpKey}`
-  //   }
-  // }
-  // fetch('https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20', options)
-  //   .then(response => response.json())
-  //   .then(response => console.log(response))
-  //   .catch(err => console.error(err))
   
   useEffect(() => {
     readRestaurants()
     readReviews()
     readUsers()
-    // yelpAPI()
   }, [])
 
   const readRestaurants = () => {

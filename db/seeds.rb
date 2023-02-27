@@ -1,8 +1,10 @@
 require 'faker'
 require 'curb'
 
+yelp_key = ENV['REACT_APP_API_KEY']
+
 yelp_api_call = Curl.get('https://api.yelp.com/v3/businesses/search?&location=SanDiego&limit=50') do |http|
-  http.headers['Authorization'] = 'Bearer hnVYFJqllmHsHVE2gYsC9_-nkz1WRO9MRXPUdxZVtH0f3HPPz_2sDhI35alboCYf-x5N9ioNyIXJv-0VckdXfSFNriX2utr1_gyB1bS3bYVJQJogKAIKsfPNT-P7Y3Yx'
+  http.headers['Authorization'] = "Bearer #{yelp_key}"
 end
 parsed = JSON.parse(yelp_api_call.body_str)
 puts parsed['businesses'].count
