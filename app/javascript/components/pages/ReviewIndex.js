@@ -4,25 +4,35 @@ import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem,
 import { NavLink } from "react-router-dom"
 
 const ReviewIndex = ({ reviews, currentUser, users }) => {
-
   const { id } = useParams()
 
   let timeUnit = "days"
   let displayedTime = 0
-
   const postTime = (currentReview) => {
     const startDate = Date.now()
     const datePosted = new Date(currentReview.updated_at)
     const msElapsed = startDate - datePosted
     let daysElapsed = (msElapsed / 8.64e7).toFixed(2)
-    if (daysElapsed < 1) {
+    displayedTime = daysElapsed
+    
+    if (daysElapsed >= 1 && daysElapsed < 1.5) {
+      timeUnit = "day"
+      displayedTime = daysElapsed
+    } else if (daysElapsed < 1) {
       const hoursElapsed = msElapsed / 3.6e6
       displayedTime = hoursElapsed
-      timeUnit = "hours"
-      if (hoursElapsed < 1) {
+      if (hoursElapsed >= 1 && hoursElapsed < 1.5) {
+        timeUnit = "hour"
+      } else if (hoursElapsed > 1.5) {
+        timeUnit = "hours"
+      } else if (hoursElapsed < 1) {
         const minElapsed = msElapsed / 60000
         displayedTime = minElapsed
-        timeUnit = "minutes"
+        if (minElapsed >= .5 && minElapsed < 1.5) {
+          timeUnit = "minute"
+        } else {
+          timeUnit = "minutes"
+        }
       }
     }
   }
