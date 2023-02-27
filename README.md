@@ -28,8 +28,6 @@ This web application was created for the food enthusiast inside us all, replacin
   - Logged-in users can add new restaurants to our application.
   - Logged-in users can also edit their restaurant.
 
-## Walk-Through/Video
-
 ## Tech Stack
 
   - React in Rails (React as a View Component of the Rails MVC framework)
