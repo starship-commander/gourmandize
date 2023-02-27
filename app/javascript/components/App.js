@@ -14,6 +14,7 @@ import ReviewIndex from "./pages/ReviewIndex"
 import ReviewNew from "./pages/ReviewNew"
 import ReviewShow from "./pages/ReviewShow"
 import MyPosts from "./pages/MyPosts"
+import AboutUs from "./pages/AboutUs"
 
 const App = (props) => {
   const [restaurants, setRestaurants] = useState([])
@@ -98,6 +99,7 @@ const App = (props) => {
       <Header {...props} />
       <Routes>
         <Route path='/' element={<Home loggedIn={props.logged_in} currentUser={props.current_user} restaurants={restaurants} />} />
+        <Route path='/about' element={<AboutUs />} />
         <Route path='/restaurantindex' element={<RestaurantIndex restaurants={restaurants} />} />
         <Route path='/restaurantshow/:id' element={<RestaurantShow restaurants={restaurants} reviews={reviews} loggedIn={props.logged_in} currentUser={props.current_user} users={users} />} />
         <Route path='/restaurantnew' element={<RestaurantNew />} />
