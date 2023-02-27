@@ -9,7 +9,7 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser, users}) =
   const [currentReview, setCurrentReview] = useState(null)
   const [whichRestaurant, setWhichRestaurant] = useState(null)
 
-  
+  const gourmandizer = users?.find(u => u.id === currentReview?.user_id)
   
   useEffect(() => {
     const review = reviews?.find(review => review.id === +id)
@@ -81,7 +81,7 @@ const ReviewShow = ({ reviews, restaurants, deleteReview, currentUser, users}) =
       {(currentReview && whichRestaurant) && (
         <>
           {postTime(currentReview)}
-          <h3 className="page-body">Gourmandizer says:</h3>
+          <h3 className="page-body" style={{marginBottom:'-1rem'}}>{gourmandizer.username} says:</h3>
           <br />
           <Card className="my-2 gradient-border show-card" style={{height:'fit-content', margin:'12%'}}>
             <div style={{height:'400px', }}>
