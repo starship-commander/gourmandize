@@ -46,6 +46,8 @@ This web application was created for the food enthusiast inside us all, replacin
     - @rails/ujs
     - devise
     - faker
+    - curb
+    - dotenv
   - Render (Web Deployment)
 
 ## Setting Up Application Locally
@@ -169,7 +171,9 @@ This web application was created for the food enthusiast inside us all, replacin
   2. [Reactstrap](https://reactstrap.github.io/?path=/story/home-installation--page)
   3. [Sass Documentation](https://sass-lang.com/documentation/syntax)
   4. [Devise GitHub Repo](https://github.com/heartcombo/devise#getting-started)
-  4. [Faker-Ruby](https://github.com/faker-ruby/faker)
+  5. [Faker-Ruby](https://github.com/faker-ruby/faker)
+  6. [Curb](https://github.com/taf2/curb)
+  7. [Dotenv](https://github.com/bkeepers/dotenv)
 
 ## Schema
 
@@ -187,7 +191,7 @@ This web application was created for the food enthusiast inside us all, replacin
 | zip_code     | Integer       |
 | avg_rating   | Float         |
 | number_of_reviews | Integer  |
-| price_range  | Integer       |
+| price_range  | String        |
 | menu_link    | Text          |
 | images       | String        |
 | user_id (FK) | Integer       |
