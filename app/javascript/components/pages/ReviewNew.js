@@ -20,7 +20,6 @@ const ReviewNew = ({ currentUser, restaurants, createReview }) => {
   const navigate = useNavigate()
   const handleChange = (e) => {
     setNewReview({...newReview, [e.target.name]: e.target.value})
-    console.log(newReview);
   }
 
   const handleSubmit = (e) => {

@@ -26,7 +26,7 @@ parsed['businesses'].each do |restaurant|
     zip_code: restaurant['location']['zip_code'],
     avg_rating: restaurant['rating'],
     number_of_reviews: restaurant['review_count'],
-    price_range: Faker::Number.within(range:1..4),
+    price_range: restaurant['price'],
     menu_link: restaurant['url'],
     images: restaurant['image_url'],
     user_id: Faker::Number.within(range:1..100)

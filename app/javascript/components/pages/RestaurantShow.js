@@ -40,11 +40,7 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews, currentUser, users }) 
               {(currentRestaurant.avg_rating >= 3 && currentRestaurant.avg_rating < 4) && ' ★★★☆☆'}
               {(currentRestaurant.avg_rating >= 4 && currentRestaurant.avg_rating < 5) && ' ★★★★☆'}
               {currentRestaurant.avg_rating === 5 && ' ★★★★★'} <br />
-              Price Range:
-              {currentRestaurant.price_range === 1 && ' $'}
-              {currentRestaurant.price_range === 2 && ' $$'}
-              {currentRestaurant.price_range === 3 && ' $$$'}
-              {currentRestaurant.price_range === 4 && ' $$$$'}
+              Price Range: {currentRestaurant.price_range}
               <br />
               <br />
               <button className='button' style={{marginRight:'10px'}}>
