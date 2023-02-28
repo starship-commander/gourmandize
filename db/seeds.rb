@@ -33,15 +33,15 @@ parsed['businesses'].each do |restaurant|
   ) 
 end
 
-100.times do |id|
-  Review.create!(
-    meal: Faker::Food.dish,
-    content: Faker::Restaurant.review,
-    rating: Faker::Number.within(range: 1..5),
-    user_id: Faker::Number.within(range:1..100),
-    restaurant_id: Faker::Number.within(range: 1..50),
-    image: Faker::LoremFlickr.image(search_terms: ['food', 'restaurant'])
-  )
-end
+# 100.times do |id|
+#   Review.create!(
+#     meal: Faker::Food.dish,
+#     content: Faker::Restaurant.review,
+#     rating: Faker::Number.within(range: 1..5),
+#     user_id: Faker::Number.within(range:1..100),
+#     restaurant_id: Faker::Number.within(range: 1..50),
+#     image: Faker::LoremFlickr.image(search_terms: ['food', 'restaurant'])
+#   )
+# end
 
 
