@@ -48,7 +48,7 @@ const RestaurantShow = ({ restaurants, loggedIn, reviews, currentUser, users }) 
               <br />
               <br />
               <button className='button' style={{marginRight:'10px'}}>
-                <a className='menuLink' href={`${currentRestaurant.menu_link}`}>See Menu</a>
+                <a className='menuLink' href={`${currentRestaurant.menu_link}`} target='blank'>See Menu</a>
               </button>
               {loggedIn && <button className='button' onClick={handleClickReview} style={{width:'130px'}} >Write a Review</button>}
             </div>

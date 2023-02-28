@@ -66,6 +66,8 @@ const AboutUs = () => {
 
           </div>
           <div style={{width: '600px'}}>
+          <span style={{color:'white', fontWeight:'bold'}}>Technical Lead</span>
+          <br />
           Hello, my name is Octavio (pronounced oak-tah-vee-o)! As the technical lead in this project, I monitored technical operations and made sure they ran smoothly. I also lead mentorship sessions for the team as well as surfaced and helped tackle blockers to aid in setting goals for the day.
           </div>
         </div>
@@ -73,7 +75,7 @@ const AboutUs = () => {
 
         <div style={{display:'flex', gap:'20px', justifyContent:'center', alignItems:'center'}}>
           <div style={{width:'600px'}}>
-          <span style={{color:'white', fontWeight:'bold'}}>Design Lead.</span>
+          <span style={{color:'white', fontWeight:'bold'}}>Design Lead</span>
           <br />
           Hi, I'm Chris! As design lead I made the layouts of the pages, picked the colors, and added in the styling for the Gourmandize app. I am also in charge of the user experience, making sure the interactions between user and application are functional and all the pages are displaying what we intend them to and navigation between pages is smooth and intuitive.
           </div>

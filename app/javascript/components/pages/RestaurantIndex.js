@@ -18,15 +18,15 @@ const RestaurantIndex = ({ restaurants }) => {
 
   const randomRestaurant = () => {
     localStorage.setItem('lastRandomRestaurantDate', new Date().toLocaleDateString())
-    console.log(localStorage)
+    // console.log(localStorage)
     const randomIndex = Math.floor(Math.random() * restaurants.length)
     let test = restaurants[randomIndex]
-    console.log(test)
+    // console.log(test)
     setTodaysPick(restaurants[randomIndex])
   }
   const timer = setInterval(() => {
     randomRestaurant();
-  }, 15000);
+  }, 15000*10);
 
 
   const navigate = useNavigate()
@@ -49,10 +49,10 @@ const RestaurantIndex = ({ restaurants }) => {
       <main className="page-body">
         <h3 style={{ marginLeft: '10vw' }}>Our Restaurants</h3>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Card className="my-2 res-index-card gradient-border" style={{ margin: '1rem', height: 'fit-content' }}>
+          {todaysPick && (<Card className="my-2 res-index-card gradient-border" style={{ margin: '1rem', height: 'fit-content' }}>
             <CardImg
               alt="Card image cap"
-              src="https://picsum.photos/900/180"
+              src={todaysPick.images}
               style={{
                 height: '200px'
               }}
@@ -62,11 +62,9 @@ const RestaurantIndex = ({ restaurants }) => {
             <CardBody>
               <CardTitle tag="h5">
                 <span className="card-text">Feeling adventurous? Try this random pick:{' '}</span>
-                {todaysPick && (
                   <span onClick={toRestaurant} className="restaurant-name">
                     {todaysPick.name}
                   </span>
-                )}
               </CardTitle>
               <CardText>
                 Cuisine:
@@ -87,13 +85,8 @@ const RestaurantIndex = ({ restaurants }) => {
                 {todaysPick?.price_range === 3 && ' $$$'}
                 {todaysPick?.price_range === 4 && ' $$$$'}
               </CardText>
-              <CardText>
-                <small className="text-muted">
-                  Last updated 3 mins ago
-                </small>
-              </CardText>
             </CardBody>
-          </Card>
+          </Card>)}
         </div>
 
         <h3 style={{ marginLeft: '10vw' }}>See the rest:</h3>
@@ -117,7 +110,7 @@ const RestaurantIndex = ({ restaurants }) => {
                 }}>
                   <img
                     alt="Card"
-                    src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+                    src={restaurant.images}
                     style={{ height: '100%', width: '100%' }}
                   />
                 </div>
