@@ -79,11 +79,7 @@ const RestaurantIndex = ({ restaurants }) => {
                 {todaysPick?.avg_rating === 5 && ' ★★★★★'}
               </CardText>
               <CardText>
-                Price:
-                {todaysPick?.price_range === 1 && ' $'}
-                {todaysPick?.price_range === 2 && ' $$'}
-                {todaysPick?.price_range === 3 && ' $$$'}
-                {todaysPick?.price_range === 4 && ' $$$$'}
+                Price: {todaysPick.price_range}
               </CardText>
             </CardBody>
           </Card>)}
@@ -135,11 +131,7 @@ const RestaurantIndex = ({ restaurants }) => {
                     {restaurant.cuisine}
                   </ListGroupItem>
                   <ListGroupItem>
-                    Price Range:
-                    {restaurant.price_range === 1 && ' $'}
-                    {restaurant.price_range === 2 && ' $$'}
-                    {restaurant.price_range === 3 && ' $$$'}
-                    {restaurant.price_range === 4 && ' $$$$'}
+                    Price Range: {restaurant.price_range || '(None Provided)'}
                   </ListGroupItem>
                 </ListGroup>
                 <CardBody style={{
