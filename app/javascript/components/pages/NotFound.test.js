@@ -10,6 +10,7 @@ describe("<NotFound />", () => {
         <NotFound />
       </BrowserRouter>
     )
+    
   })
   it("has an image", () => {
     render(

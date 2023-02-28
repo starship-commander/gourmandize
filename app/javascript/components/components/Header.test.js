@@ -1,7 +1,8 @@
 import React from "react"
-import { render, screen } from "@testing-library/react"
+import { render, screen, fireEvent } from "@testing-library/react"
 import Header from "./Header"
 import { BrowserRouter, MemoryRouter, Routes, Route } from "react-router-dom"
+
 
 describe("<Header />", () => {
 
@@ -17,7 +18,8 @@ const renderShow = () => {
 
   it("renders without crashing", () => {
     renderShow()
-    screen.logTestingPlaygroundURL()
+   
+
   })
   it("renders app name text in the header", () => {
     renderShow()
@@ -34,4 +36,9 @@ const renderShow = () => {
       hidden: true
     })).toBeInTheDocument()
   })
+  it("has a list of items being linked or referenced", () => {
+    renderShow()
+    expect(screen.getByRole('list')).toBeInTheDocument()
+})
+
 })

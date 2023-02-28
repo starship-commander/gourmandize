@@ -28,21 +28,49 @@ const restaurants = [{
   images: 'picture_of_cheeseburger.png',
   user_id: 1
 }]
+const deleteReview = () => {
+  fetch('/reviews/1',{
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "DELETE"
+  })
+    .then((response) => response.json())
+    .then((payload) => {
+      readReviews(payload)
+    })
+    .catch((error) => console.log(error))
+}
+const user =  {
+  email: 'cheesy_boy@email.com',
+  password: 'cheese',
+  username: 'CheesyBoy',
+  id: 1
+}
+const users =  [{
+  email: 'cheesy_boy@email.com',
+  password: 'cheese',
+  username: 'CheesyBoy',
+  id: 1
+}]
 
 const renderShow = () => {
   render(
     <MemoryRouter initialEntries={["/reviewshow/1"]}>
       <Routes>
-        <Route path='reviewshow/:id' element={<ReviewShow reviews={review} restaurants={restaurants} />}/>
+        <Route path='reviewshow/:id' element={<ReviewShow reviews={review} restaurants={restaurants} deleteReview={deleteReview} currentUser={user} users={users}  />}/>
       </Routes>
     </MemoryRouter>
   )
+
 }
+
 
 describe("<ReviewShow />", () => {
   it("renders without crashing", () => {
     renderShow()
   })
+  screen.logTestingPlaygroundURL()
   it("includes meal", () => {
     render(renderShow())
     expect(screen.getByRole('heading', {
@@ -55,7 +83,7 @@ describe("<ReviewShow />", () => {
   })
   it("includes rating", () => {
     render(renderShow())
-    expect(screen.getByText(/my rating:★★★★★/i)).toBeInTheDocument()
+    expect(screen.getByText(/rating: ★★★★★/i)).toBeInTheDocument()
   })
   it("includes date posted", () => {
     render(renderShow())
