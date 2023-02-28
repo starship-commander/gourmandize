@@ -49,12 +49,12 @@ const RestaurantIndex = ({ restaurants }) => {
       <main className="page-body">
         <h3 style={{ marginLeft: '10vw' }}>Our Restaurants</h3>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          {todaysPick && (<Card className="my-2 res-index-card gradient-border" style={{ margin: '1rem', height: 'fit-content' }}>
+          {todaysPick && (<Card className="my-2 res-index-card gradient-border" style={{ margin: '1rem', height: '400px' }}>
             <CardImg
               alt="Card image cap"
               src={todaysPick.images}
               style={{
-                height: '200px'
+                height: '230px'
               }}
               top
               width="100%"
@@ -99,7 +99,7 @@ const RestaurantIndex = ({ restaurants }) => {
                   display: 'inline-flex',
                   margin: '15px',
                   width: '16rem',
-                  height: 'fit-content',
+                  height: '450px',
                   justifyContent: 'space-around'
                 }}
                 key={index}
@@ -118,9 +118,6 @@ const RestaurantIndex = ({ restaurants }) => {
                   <CardTitle tag="h5" className="card-text">
                     {restaurant.name}
                   </CardTitle>
-                  {/* <CardText style={{height:'3rem'}}>
-                    Hello
-                  </CardText> */}
                 </CardBody>
                 <ListGroup flush>
                   <ListGroupItem>
