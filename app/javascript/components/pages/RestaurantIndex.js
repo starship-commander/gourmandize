@@ -26,7 +26,7 @@ const RestaurantIndex = ({ restaurants }) => {
   }
   const timer = setInterval(() => {
     randomRestaurant();
-  }, 15000*10);
+  }, 10000);
 
 
   const navigate = useNavigate()
