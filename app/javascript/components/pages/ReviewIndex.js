@@ -96,10 +96,10 @@ const ReviewIndex = ({ reviews, currentUser, users, restaurants }) => {
               <CardImg 
                 alt='review card image'
                 src={review.image}
-                style={{height:'40%'}}
+                style={{height:'38%'}}
               />
               <CardBody>
-                <CardTitle tag="h5" style={{height:'2.5rem'}} className="card-text" >
+                <CardTitle tag="h5" style={{height:'1.5rem'}} className="card-text" >
                   {review.meal}
                 </CardTitle>
                 <CardText>

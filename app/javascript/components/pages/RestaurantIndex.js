@@ -49,7 +49,7 @@ const RestaurantIndex = ({ restaurants }) => {
       <main className="page-body">
         <h3 style={{ marginLeft: '10vw' }}>Our Restaurants</h3>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          {todaysPick && (<Card className="my-2 res-index-card gradient-border" style={{ margin: '1rem', height: '400px' }}>
+          {todaysPick && (<Card className="my-2 res-index-card gradient-border" style={{ margin: '1rem', height: 'fit-content' }}>
             <CardImg
               alt="Card image cap"
               src={todaysPick.images}
@@ -105,8 +105,9 @@ const RestaurantIndex = ({ restaurants }) => {
                 key={index}
               >
                 <div style={{
-                  height: '40%',
-                  width: '100%'
+                  height: '45%',
+                  width: '100%',
+                  overflow: 'hidden'
                 }}>
                   <img
                     alt="Card"
@@ -114,7 +115,7 @@ const RestaurantIndex = ({ restaurants }) => {
                     style={{ height: '100%', width: '100%' }}
                   />
                 </div>
-                <CardBody style={{ height: '5%' }}>
+                <CardBody style={{ height: '10%', padding:'5%', textIndent:'5px' }}>
                   <CardTitle tag="h5" className="card-text">
                     {restaurant.name}
                   </CardTitle>
