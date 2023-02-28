@@ -120,16 +120,16 @@ body {
   display: flex;
   justify-content: center;
   height: 22rem;
-  max-width: 800px;
+  width: 700px;
   margin-left: 4vw;
   margin-top: 4vh;
-  box-shadow: rgb(203, 214, 255) -5px 5px 15px 5px;
+  box-shadow: rgb(24, 0, 79) -10px 10px 20px 3px;
   transition: width 0.5s linear
 }
 
-@media screen and (max-width: 1035px) {
+@media screen and (max-width: 900px) {
   .res-show {
-    width: 85%;
+    width: 60%;
     transition: width 0.5s linear;
   }
 }
@@ -153,7 +153,12 @@ body {
 
 @media screen and (min-width: 863px) {
   .res-index-card {
-    width: 52rem
+    width: 40rem;
+  }
+}
+@media screen and (max-width: 863px) {
+  .res-index-card {
+    height: fit-content !important;
   }
 }
 
