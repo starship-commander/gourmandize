@@ -215,3 +215,42 @@ This web application was created for the food enthusiast inside us all, replacin
 | password     | String        |
 | username     | String        |
 
+## Yelp API Business Model Example:
+```ruby
+    {
+    "id"=>"eGhOLzFFIhrvF6QjSSpJsg", 
+    "alias"=>"phils-bbq-san-diego-2", 
+    "name"=>"Phil's BBQ", 
+    "image_url"=>"https://s3-media2.fl.yelpcdn.com/bphoto/IijLAPbkYwMrvcMgNo_8vw/o.jpg", 
+    "is_closed"=>false, 
+    "url"=>"https://www.yelp.com/biz/phils-bbq-san-diego-2?adjust_creative=AemLlpZtoX7awyuA4xnLOw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=AemLlpZtoX7awyuA4xnLOw", 
+    "review_count"=>15751, 
+    "categories"=>[
+        {"alias"=>"bbq", "title"=>"Barbeque"}, 
+        {"alias"=>"bars", "title"=>"Bars"}, 
+        {"alias"=>"tradamerican", "title"=>"American (Traditional)"}
+    ], 
+    "rating"=>4.5, 
+    "coordinates"=>{
+        "latitude"=>32.7547792020658, 
+        "longitude"=>-117.21598848605
+    }, 
+    "transactions"=>["delivery"], 
+    "price"=>"$$", 
+    "location"=>{
+        "address1"=>"3750 Sports Arena Blvd", 
+        "address2"=>"", 
+        "address3"=>"", 
+        "city"=>"San Diego", 
+        "zip_code"=>"92110", 
+        "country"=>"US", 
+        "state"=>"CA", 
+        "display_address"=>[
+        "3750 Sports Arena Blvd", 
+        "San Diego, CA 92110"]
+        }, 
+    "phone"=>"+16192266333", 
+    "display_phone"=>"(619) 226-6333", 
+    "distance"=>7024.037700535082
+    }
+```
