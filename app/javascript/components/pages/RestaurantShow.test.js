@@ -28,7 +28,7 @@ const renderShow = () => {
     </MemoryRouter>
   )
 }
-
+screen.logTestingPlaygroundURL()
 describe("<RestaurantShow />", () => {
   it("displays name of restaurant", () => {
     render(renderShow())
@@ -57,5 +57,7 @@ describe("<RestaurantShow />", () => {
     expect(screen.getByRole('heading', {
       name: /see what other gourmandizers are saying:/i
     })).toBeInTheDocument()
+    screen.logTestingPlaygroundURL()
   })
+  screen.logTestingPlaygroundURL()
 })

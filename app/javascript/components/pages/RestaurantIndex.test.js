@@ -32,10 +32,13 @@ describe("<RestaurantIndex />", () => {
         <RestaurantIndex restaurants={restaurants}/>
       </BrowserRouter>
     )
-    expect(screen.getByRole('heading', {
-      name: /today's pick: best cheeseburger/i
-    })).toBeInTheDocument()
+    const heading = screen.getByRole('heading', {
+      name: /feeling adventurous\? try this random pick: best cheeseburger/i
+    });
+    
+    expect(heading).toBeInTheDocument()
   })
+  
 
   it("has a list of information about the restaurant", () => {
     render(
@@ -43,7 +46,37 @@ describe("<RestaurantIndex />", () => {
         <RestaurantIndex restaurants={restaurants}/>
       </BrowserRouter>
     )
+    screen.logTestingPlaygroundURL()
     expect(screen.getByRole('list')).toBeInTheDocument()
   })
+  it("has average rating", () => {
+    render(
+      <BrowserRouter>
+        <RestaurantIndex restaurants={restaurants}/>
+      </BrowserRouter>
+    )
+    expect(screen.getByText(/average rating: ★★★★☆/i)).toBeInTheDocument()
+  })
+  it("has a see more link", () => {
+    render(
+      <BrowserRouter>
+        <RestaurantIndex restaurants={restaurants}/>
+      </BrowserRouter>
+    )
+    expect(screen.getByRole('link', {
+      name: /see more/i
+    })).toBeInTheDocument()
+  })
+  it("has a see more link", () => {
+    render(
+      <BrowserRouter>
+        <RestaurantIndex restaurants={restaurants}/>
+      </BrowserRouter>
+    )
+    expect(screen.getByRole('button', {
+      name: /see more/i
+    })).toBeInTheDocument()
+  })
+
   
 })

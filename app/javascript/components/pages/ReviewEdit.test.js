@@ -46,6 +46,8 @@ describe("<ReviewEdit />", () => {
 
   it("renders without crashing", () => {
     renderShow()
+    screen.logTestingPlaygroundURL()
+
   })
   it("has title for each input field", () => {
     renderShow()
@@ -62,5 +64,13 @@ describe("<ReviewEdit />", () => {
     expect(screen.getByRole('button', {
       name: /submit/i
     })).toBeInTheDocument()
+  })
+  it("has a combobox", () => {
+    renderShow()
+    expect(screen.getByRole('combobox')).toBeInTheDocument()
+  })
+  it("has a submit button", () => {
+    renderShow()
+    expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument()
   })
 })
