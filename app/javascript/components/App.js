@@ -104,11 +104,11 @@ const App = (props) => {
         <Route path='/restaurantshow/:id' element={<RestaurantShow restaurants={restaurants} reviews={reviews} loggedIn={props.logged_in} currentUser={props.current_user} users={users} />} />
         <Route path='/restaurantnew' element={<RestaurantNew />} />
         <Route path='/restaurantedit' element={<RestaurantEdit />} />
-        <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} currentUser={props.current_user} users={users} />} />
+        <Route path='/reviewindex' element={<ReviewIndex reviews={reviews} currentUser={props.current_user} users={users} restaurants={restaurants}/>} />
         <Route path='/reviewshow/:id' element={<ReviewShow reviews={reviews} restaurants={restaurants} deleteReview={deleteReview} currentUser={props.current_user} users={users} />} />
         <Route path='/reviewnew/:id' element={<ReviewNew currentUser={props.current_user} restaurants={restaurants} createReview={createReview} />} />
         <Route path='/reviewedit/:id' element={reviews.length > 0 && <ReviewEdit updateReview={updateReview} restaurants={restaurants} reviews={reviews} currentUser={props.current_user} users={users} />} />
-        {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} users={users} />} />}
+        {props.logged_in && <Route path='/myposts' element={<MyPosts reviews={reviews} currentUser={props.current_user} users={users} restaurants={restaurants} />} />}
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { Card, CardImg, CardText, CardTitle, CardBody, ListGroup, ListGroupItem, CardLink, Button} from "reactstrap"
 import { NavLink } from "react-router-dom"
+import { findAllByAltText } from "@testing-library/react"
 
-const ReviewIndex = ({ reviews, currentUser, users }) => {
+const ReviewIndex = ({ reviews, currentUser, users, restaurants }) => {
   const { id } = useParams()
 
   let timeUnit = "days"
@@ -34,6 +35,18 @@ const ReviewIndex = ({ reviews, currentUser, users }) => {
           timeUnit = "minutes"
         }
       }
+    }
+  }
+  const navigate = useNavigate()
+
+  const toRestaurant = (review) => {
+    const restaurant = restaurants?.find(value => value.id === review.restaurant_id)
+    navigate(`/restaurantshow/${restaurant?.id}`)
+  }
+
+  const getRestaurant = (restaurantID) => {
+    for (const restaurant of restaurants) {
+      if (restaurant?.id === restaurantID) return restaurant.name
     }
   }
 
@@ -77,7 +90,7 @@ const ReviewIndex = ({ reviews, currentUser, users }) => {
               style={{
                 width: '16rem',
                 margin: '2%',
-                height: '520px'
+                height: '550px'
               }}
             >
               <CardImg 
@@ -89,6 +102,10 @@ const ReviewIndex = ({ reviews, currentUser, users }) => {
                 <CardTitle tag="h5" style={{height:'2.5rem'}} className="card-text" >
                   {review.meal}
                 </CardTitle>
+                <CardText>
+                  From: <span className="restaurant-name" onClick={() => toRestaurant(review)}>
+                  {getRestaurant(review.restaurant_id)}</span>
+                </CardText>
                 <CardText style={{height:'1rem'}}>
                   Rating: 
                   {(review.rating >= 1 && review.rating < 2) && '★☆☆☆☆'}
